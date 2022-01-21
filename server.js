@@ -12,8 +12,8 @@ app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views'));
 
 
-app.use(express.static(/*'public',*/'views'));
-app.use(express.static('layouts'));
+app.use(express.static('public'));
+
 // app.use(express.static('./views/layouts/css'));
 
 app.get('/', (req, res) => {
