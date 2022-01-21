@@ -4,15 +4,16 @@ const ex_hbs = require('express-handlebars');
 const hbs = ex_hbs.create({});
 const port = process.env.PORT || 3004;
 const path = require('path');
+// const routes = require('./controllers/');
 
 
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
-app.set('views', path.join(__dirname, 'views'));
+// app.set('views', path.join(__dirname, 'views'));
 
 
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use(express.static('./views/layouts/css'));
 
