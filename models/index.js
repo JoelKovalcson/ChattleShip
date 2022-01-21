@@ -3,13 +3,11 @@ const Board = require('./Board');
 const Game = require('./Game');
 const Message = require('./Message');
 
-Message.hasOne(User, { 
-    as: 'from',
+Message.hasOne(User, {
     foreignKey: 'from'
 });
 
 Message.hasOne(User, {
-    as: 'to',
     foreignKey: 'to'
 });
 
@@ -30,12 +28,10 @@ User.hasMany(Board, {
 });
 
 Game.hasOne(User, {
-    as: 'player1',
     foreignKey: 'player1'
 });
 
 Game.hasOne(User, {
-    as: 'player2',
     foreignKey: 'player2'
 });
 
