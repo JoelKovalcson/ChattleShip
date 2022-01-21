@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Board } = require('../../models')
+const { Board } = require('../../models');
 
 router.post('/', (req, res) => {
     Board.create({
