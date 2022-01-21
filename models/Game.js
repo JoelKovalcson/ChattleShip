@@ -27,7 +27,11 @@ Game.init(
             }
         },
         turn: {
-
+			type: DataTypes.INTEGER,
+			references: {
+				model: User,
+				key: 'id'
+			}
         },
         last_move: {
             type: DataTypes.DATE,

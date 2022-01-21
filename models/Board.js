@@ -17,10 +17,11 @@ Board.init(
             references: {
                 model: User,
                 key: 'id'
-            } 
+            }
         },
         grid: {
-
+			type: DataTypes.TEXT,
+			allowNull: false
         }
     },
     {

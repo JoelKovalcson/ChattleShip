@@ -25,6 +25,10 @@ Board.belongsTo(User, {
     foreignKey: 'owner'
 });
 
+User.hasMany(Board, {
+	foreignKey: 'owner'
+});
+
 Game.hasOne(User, {
     as: 'player1',
     foreignKey: 'player1'
