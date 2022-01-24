@@ -12,10 +12,11 @@ app.set('view engine', 'handlebars');
 // app.set('views', path.join(__dirname, 'views'));
 
 
+// app.use(express.static(__dirname, 'public'));
 app.use(express.static(path.join(__dirname, 'public')));
 // app.use(require('./controllers/'));
 
-// app.use(express.static('./views/layouts/css'));
+// app.use(express.static('./css/tail-style.css'));
 
 app.get('/', (req, res) => {
     // res.sendFile(path.join(__dirname, './public/index.html'));

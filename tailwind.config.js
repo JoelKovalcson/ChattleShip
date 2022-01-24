@@ -2,9 +2,9 @@ const tailwindcss = require("tailwindcss");
 
 module.exports = {
   content: [
-    "./views/*.handlebars/html",
-    "./views/layouts/*.handlebars/html"
-  //  "./public/*.html"
+    // "./views/*.handlebars/html",
+  //   "./layouts/*.{js,html}",
+   './views/**/*.{html,js,handlebars}'
 ],
   theme: {
     extend: {},
