@@ -3,14 +3,6 @@ const Board = require('./Board');
 const Game = require('./Game');
 const Message = require('./Message');
 
-Message.hasOne(User, {
-    foreignKey: 'from'
-});
-
-Message.hasOne(User, {
-    foreignKey: 'to'
-});
-
 User.hasMany(Message, {
     foreignKey: 'from'
 });
@@ -19,12 +11,22 @@ User.hasMany(Message, {
     foreignKey: 'to'
 });
 
-Board.belongsTo(User, {
-    foreignKey: 'owner'
+Message.belongsTo(User, {
+    foreignKey: 'from',
+	onDelete: 'SET NULL'
+});
+
+Message.belongsTo(User, {
+    foreignKey: 'to',
+	onDelete: 'SET NULL'
 });
 
 User.hasMany(Board, {
 	foreignKey: 'owner'
+});
+
+Board.belongsTo(User, {
+    foreignKey: 'owner'
 });
 
 Game.hasOne(User, {
@@ -35,11 +37,11 @@ Game.hasOne(User, {
     foreignKey: 'player2'
 });
 
-User.hasMany(Game, {
+User.belongsToMany(Game, {
     foreignKey:'player1'
 });
 
-User.hasMany(Game, {
+User.belongsToMany(Game, {
     foreignKey:'player2'
 });
 
