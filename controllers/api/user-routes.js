@@ -29,7 +29,15 @@ router.post('/', (req, res) => {
         user_name: req.body.user_name,
         password: req.body.password
     })
-    .then(userData => res.json(userData))
+    .then(userData => {
+		req.session.save(() => {
+			req.session.user_id = userData.id;
+			req.session.user_name = userData.user_name;
+			req.session.loggedIn = true;
+			
+			res.json(userData);
+		});
+	})
     .catch(err => {
         console.log(err);
         res.status(500).json(err);
@@ -56,7 +64,7 @@ router.post('/login', (req, res) => {
         }
 		req.session.save(() => {
 			req.session.user_id = userData.id;
-			req.session.username = userData.user_name;
+			req.session.user_name = userData.user_name;
 			req.session.loggedIn = true;
 			res.json({user: userData, message: 'You are logged in'});
 		});
