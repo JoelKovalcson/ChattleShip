@@ -2,7 +2,6 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const ex_hbs = require('express-handlebars');
-require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 3004;
