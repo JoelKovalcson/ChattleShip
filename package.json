@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "buildcss": "npx tailwindcss -i style.css -o public/css/tail-style.css"
+    "buildcss": "npx tailwindcss -i style.css -o public/css/tail-style.css",
+	"seeds": "node seeds/index.js"
   },
   "repository": {
     "type": "git",
