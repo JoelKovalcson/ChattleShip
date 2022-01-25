@@ -1,28 +1,40 @@
-const express = require('express');
-const ex_hbs = require('express-handlebars');
-const hbs = ex_hbs.create({});
-const port = process.env.PORT || 3004;
 const path = require('path');
+const express = require('express');
+const session = require('express-session');
+const ex_hbs = require('express-handlebars');
+require('dotenv').config();
 
 const app = express();
+const port = process.env.PORT || 3004;
 
+const sequelize = require('./config/connection');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
+const sess = {
+	secret: process.env.SECRET,
+	cookie: {},
+	resave: false,
+	saveUninitialized: true,
+	store: new SequelizeStore({
+		db: sequelize
+	})
+};
+
+app.use(session(sess));
+
+const hbs = ex_hbs.create({});
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
-// app.set('views', path.join(__dirname, 'views'));
 
-
-// app.use(express.static(__dirname, 'public'));
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use(require('./controllers/'));
 
-// app.use(express.static('./css/tail-style.css'));
+app.use(require('./controllers'));
 
-app.get('/', (req, res) => {
-    // res.sendFile(path.join(__dirname, './public/index.html'));
-    res.render('index'); 
+sequelize.sync({force: false}).then(() => {
+	app.listen(PORT, () => {
+		console.log(`Server now listening to port ${port}.`);
+	});
 });
-
-app.listen(port, () => {
-    console.log(`Server now listening to port ${port}.`);
-})
