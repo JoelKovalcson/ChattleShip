@@ -1,4 +1,5 @@
 const {Model, DataTypes} = require('sequelize');
+const { Board } = require('.');
 const sequelize = require('../config/connection');
 const User = require('./User')
 
@@ -18,7 +19,24 @@ Game.init(
 				model: User,
 				key: 'id'
 			}
-        }
+        },
+		board1: {
+			type: DataTypes.INTEGER,
+			references: {
+				model: Board,
+				key: 'id'
+			}
+		},
+		board2: {
+			type: DataTypes.INTEGER,
+			references: {
+				model: Board,
+				key: 'id'
+			}
+		},
+		isComplete: {
+			type: DataTypes.BOOLEAN
+		}
     },
     {
         sequelize,

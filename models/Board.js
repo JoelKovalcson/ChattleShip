@@ -13,13 +13,6 @@ Board.init(
             primaryKey: true,
             autoIncrement: true
         },
-		game_id: {
-			type: DataTypes.INTEGER,
-			references: {
-				model: Game,
-				key: 'id'
-			}
-		},
         owner: {
             type: DataTypes.INTEGER,
             references: {
