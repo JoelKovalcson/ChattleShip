@@ -1,4 +1,5 @@
 const {Model, DataTypes} = require('sequelize');
+const Game = require('./Game');
 const sequelize = require('../config/connection');
 const User = require('./User')
 
@@ -12,6 +13,13 @@ Board.init(
             primaryKey: true,
             autoIncrement: true
         },
+		game_id: {
+			type: DataTypes.INTEGER,
+			references: {
+				model: Game,
+				key: 'id'
+			}
+		},
         owner: {
             type: DataTypes.INTEGER,
             references: {

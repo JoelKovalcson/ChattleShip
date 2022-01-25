@@ -7,13 +7,13 @@ User.hasMany(Message, {
     foreignKey: 'from'
 });
 
-User.hasMany(Message, {
-    foreignKey: 'to'
-});
-
 Message.belongsTo(User, {
     foreignKey: 'from',
 	onDelete: 'SET NULL'
+});
+
+User.hasMany(Message, {
+    foreignKey: 'to'
 });
 
 Message.belongsTo(User, {
@@ -29,20 +29,12 @@ Board.belongsTo(User, {
     foreignKey: 'owner'
 });
 
-Game.hasOne(User, {
-    foreignKey: 'player1'
+Game.hasMany(Board, {
+	foreignKey: 'game_id'
 });
 
-Game.hasOne(User, {
-    foreignKey: 'player2'
-});
-
-User.belongsToMany(Game, {
-    foreignKey:'player1'
-});
-
-User.belongsToMany(Game, {
-    foreignKey:'player2'
+Board.belongsTo(Game, {
+	foreignKey: 'game_id'
 });
 
 module.exports = {User,Board,Game,Message};

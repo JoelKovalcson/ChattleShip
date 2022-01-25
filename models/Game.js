@@ -12,20 +12,6 @@ Game.init(
             primaryKey: true,
             autoIncrement: true
         },
-        player1: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: User,
-                key: 'id'
-            }
-        },
-        player2: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: User,
-                key: 'id'
-            }
-        },
         turn: {
 			type: DataTypes.INTEGER,
 			references: {
