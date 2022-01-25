@@ -29,15 +29,11 @@ Message.init(
                 model: User,
                 key: 'id'
             }
-        },
-        created: {
-            type: DataTypes.DATE,
-            allowNull: false
         }
     },
     {
         sequelize,
-        timestamps: false,
+        timestamps: true,
         freezeTableName: true,
         underscored: true,
         modelName: 'message'

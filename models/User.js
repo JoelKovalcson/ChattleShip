@@ -23,10 +23,6 @@ User.init (
         password: {
             type: DataTypes.STRING,
             allowNull: false
-        },
-        created: {
-            type: DataTypes.DATE,
-            allowNull: false
         }
     },
     {
@@ -41,7 +37,7 @@ User.init (
 			}
 		},
         sequelize,
-        timestamps: false,
+        timestamps: true,
         freezeTableName: true,
         underscored: true,
         modelName: 'user'
