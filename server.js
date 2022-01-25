@@ -4,7 +4,7 @@ const session = require('express-session');
 const ex_hbs = require('express-handlebars');
 
 const app = express();
-const port = process.env.PORT || 3004;
+const PORT = process.env.PORT || 3004;
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -35,6 +35,6 @@ app.use(require('./controllers'));
 // Use {force: true} if rebuilding DB
 sequelize.sync({force: false}).then(() => {
 	app.listen(PORT, () => {
-		console.log(`Server now listening to port ${port}.`);
+		console.log(`Server now listening to port ${PORT}.`);
 	});
 });
