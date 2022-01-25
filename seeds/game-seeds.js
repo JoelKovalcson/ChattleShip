@@ -2,7 +2,10 @@ const { Game } = require('../models');
 
 const games = [
 	{
-		turn: 1
+		turn: 1,
+		board1: 1,
+		board2: 2,
+		isComplete: false
 	}
 ];
 
