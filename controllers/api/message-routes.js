@@ -1,19 +1,20 @@
 const router = require("express").Router();
+const { Op } = require("sequelize");
 const { Message } = require("../../models");
 
 router.get("/:id", (req, res) => {
   Message.findAll({
     where: {
-      $or: [
-        {
-          to: req.session.user_id,
-          from: req.params.id,
-        },
-        {
-          to: req.params.id,
-          from: req.session.user_id,
-        },
-      ],
+		[Op.or]: [
+			{
+				to: parseInt(req.params.id),
+				from: req.session.user_id
+			},
+			{
+				to: req.session.user_id,
+				from: parseInt(req.params.id)
+			}
+		]
     },
 	limit: 20,
 	order: [
