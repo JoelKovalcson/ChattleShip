@@ -1,5 +1,9 @@
 const { Message } = require('../models');
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 const messages = [
 	{
 		message: 'Hello test2',
@@ -18,6 +22,11 @@ const messages = [
 	}
 ];
 
-const seedMessages = () => Message.bulkCreate(messages);
+const seedMessages = async () => {
+	for(var message of messages) {
+		Message.create(message);
+		await sleep(1000);
+	}
+}
 
 module.exports = seedMessages;
