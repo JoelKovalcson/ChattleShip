@@ -4,27 +4,39 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="/css/tail-style.css" rel="stylesheet" >
+        <link href="/css/tail-style.css" rel="stylesheet">
+        {{!-- <link href="/open-iconic/font/css/open-iconic.css" rel="stylesheet"> --}}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic.min.css" 
+        integrity="sha512-LeCmts7kEi09nKc+DwGJqDV+dNQi/W8/qb0oUSsBLzTYiBwxj0KBlAow2//jV7jwEHwSCPShRN2+IWwWcn1x7Q==" 
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer" />
         <title>ChattleShip</title>
     </head>
-    <body class="h-screen">
-        <header class="flex justify-around p-5">
-            <a class="flex items-center" href="/">
-                <h1>ChattleShip</h1>
-            </a>
-            {{!-- {{log this}} --}}
-            {{#if loggedIn}}
-            <nav class="w-1/3 mx-4"> 
-                <ul class="flex flex-row p-8 justify-around">
-                  
-                  <li><a href="/">Logout</a></li>
-                  <li><a href="/">link2</a></li>
-                  <li><a href="/">link3</a></li> 
-                </ul>
-            </nav>
-            {{/if}}
+    <body class="h-screen font-mono prose-md sm:prose-xl">
+        <header class="flex flex-col justify-between p-3">
+            <a class="flex justify-end" href="/"><span class="oi" data-glyph="cog"></span></a>
+        
+            <div class="flex flex-col justify-between sm:flex-row">
+                <a class="flex justify-center prose-lg sm:items-center" href="/">
+                <h1 class="sm:mb-0">ChattleShip</h1>
+                </a> 
+
+                {{!-- {{#if loggedIn}} --}}
+                <nav class="flex justify-center sm:w-2/3 sm:"> 
+                    <ul class="flex flex-col content-center sm:w-3/4 justify-around sm:content sm:flex-row sm:p-2">
+                    <li><a href="/">Profile</a></li> 
+                    <li><a href="/">Dashboard</a></li>
+                    <li><a href="/">Logout</a></li>
+                    <li></li>
+                    {{!-- settings icon to bring down toggle to switch to dark mode --}}
+                    </ul>
+                </nav>
+
+            </div>   
+            {{!-- {{/if}} --}}
         </header>
-        <main class="h-5/6 flex flex-col w-full h-full border-2 box-border p-12 md:flex-row md:justify-between">
+
+        <main class="h-5/6 flex flex-col w-full h-full border-2 box-border p-12 ">
             {{{body}}}
         </main>
         <footer class="flex justify-center">
@@ -32,5 +44,5 @@
         </footer>
     </body>
     
-    
+    {{!-- md:flex-row md:justify-between --}}
 </html>
