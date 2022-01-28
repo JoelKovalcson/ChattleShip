@@ -3,7 +3,12 @@
         <button id="resumeGame" class="border-2 border-transparent rounded-xl hover:brightness-200 hover:shadow-xl hover:shadow-black" type="submit">Resume</button>
         <a>
             <ul class="flex flex-col">
-                {{!-- list area for resumable games --}}
+                {{#each game}}
+
+                    <li>{{this}}</li>
+                    {{!-- list area for resumable games --}}
+                    
+                {{/each}}
             </ul>
         </a>
     </div>
@@ -11,8 +16,12 @@
         <button id="joinGame" class="border-2 border-transparent rounded-xl hover:brightness-200 hover:shadow-xl hover:shadow-black" type="submit">Join</button>
         <a>
             <ul class="flex flex-col">
-                
-                {{!-- joinable games --}}
+                {{#each}}
+
+                    <li>{{this}}</li>
+                    {{!-- joinable games --}}
+
+                {{/each}}
             </ul>
         </a>
     </div>
