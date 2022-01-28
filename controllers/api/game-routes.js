@@ -53,10 +53,9 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
 	Game.create({
-			turn: req.body.turn,
-			board1: req.body.board1,
+			turn: req.session.user_id,
 			isComplete: false,
-			board2: null
+			full: false
 		})
 		.then(gameData => res.json(gameData))
 		.catch(err => {
@@ -86,7 +85,6 @@ router.put('/:id', (req, res) => {
 		});
 });
 
-// Unused (As of now) delete route
 router.delete('/:id', (req, res) => {
 	Game.destroy({
 			where: {
