@@ -25,7 +25,7 @@
                 <nav class="flex justify-center sm:w-2/3 sm:"> 
                     <ul class="flex flex-col content-center sm:w-3/4 justify-around sm:content sm:flex-row sm:p-2">
 					{{#if loggedIn}}
-                    <li><a class="border-2 border-transparent rounded-xl hover:brightness-200 hover:shadow-xl hover:shadow-black" href="/profile">Profile</a></li> 
+                    <li><a class="border-2 border-transparent rounded-xl hover:brightness-200 hover:shadow-xl hover:shadow-black" href="/profile">{{user_name}}</a></li> 
                     <li><a class="border-2 border-transparent rounded-xl hover:brightness-200 hover:shadow-xl hover:shadow-black" href="/dashboard">Dashboard</a></li>
                     <li><a class="border-2 border-transparent rounded-xl hover:brightness-200 hover:shadow-xl hover:shadow-black" href="/" id="logout">Logout</a></li>
 					{{else}}
