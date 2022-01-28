@@ -700,6 +700,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: 0.5rem;
 }
 
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
 .box-border {
   box-sizing: border-box;
 }
@@ -722,6 +726,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .h-1\/2 {
   height: 50%;
+}
+
+.h-1\/4 {
+  height: 25%;
+}
+
+.h-3\/4 {
+  height: 75%;
 }
 
 .w-4\/5 {
