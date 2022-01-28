@@ -1,6 +1,17 @@
- <div class="chat-area flex flex-col box-border border-2 p-3">
-     <title></title>
+ <div class=" flex flex-col box-border border-2 p-3">
+     <title>Game Chat</title>
+     <ul id="chat-area" class="chat-area flex flex-col">
+        {{!-- Enter in dynamically manipulated code from users as list items --}}
+        {{#each message}}
+            {{#if User1}}
+            <li>{{this}}</li>
+            {{else}}
+            <li>{{this}}</li>
+            {{/if}}
+        {{/each}}
+     </ul>
     <chat>
+        {{!-- Enter variable for Username who's talking --}}
         john: hello yall, this is a chat-area
     </chat>
     <chat>
