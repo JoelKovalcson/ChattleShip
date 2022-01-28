@@ -1,5 +1,54 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { Op } = require('sequelize');
+const { User, Board, Game } = require('../../models');
+
+router.get('/mygames', (req, res) => {
+	User.findOne({
+		where: {
+			id: req.session.user_id
+		},
+		include: {
+			model: Board,
+			include: {
+				model: Game,
+				where: {
+					isComplete: false,
+					full: true
+				},
+				attributes: ['id', 'turn', 'full', 'isComplete'],
+				include: {
+					model: Board,
+					attributes: ['id'],
+					include: {
+						model: User,
+						attributes: ['user_name', 'id'],
+						where: {
+							[Op.not]: [{
+								id: req.session.user_id
+							}]
+						}
+					}
+				}
+			},
+			attributes: ['id']
+		},
+		attributes: {
+            exclude: ['password']
+        }
+	})
+	.then(userData => {
+		if(!userData) {
+			res.status(404).json({message: 'User not found with that id'});
+			return;
+		}
+		res.json(userData);
+	})
+	.catch(err => {
+		console.log(err);
+		res.status(500).json(err);
+	});
+});
+
 
 router.get('/:id', (req, res) => {
     User.findOne({
@@ -9,7 +58,7 @@ router.get('/:id', (req, res) => {
         where: {
             id: req.params.id
         },
-		// TODO: Add includes later
+		// TODO: Add includes later for viewing other profiles
     })
     .then(userData => {
         if (!userData) {
