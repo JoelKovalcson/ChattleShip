@@ -1,35 +1,31 @@
 const router = require('express').Router();
 const {Game, Board, User} = require('../../models');
+const {Op} = require('sequelize');
 
-// Get all games that you're in that aren't complete
-router.get('/mygames', (req, res) => {
+// Get all new games without a second player
+router.get('/joinGames', (req, res) => {
 	Game.findAll({
+			where: {
+				isComplete: false,
+				full: false
+			},
 			include: {
 				model: Board,
 				include: {
 					model: User,
 					where: {
-						id: req.session.user_id
-					}
+						[Op.not]: [{
+							id: req.session.user_id
+						}]
+					},
+					attributes: ['user_name', 'id']
 				}
-			}
+			},
+			limit: 10
 		})
-		.then(gameData => res.json(gameData))
-		.catch(err => {
-			console.log(err);
-			res.status(500).json(err);
-		});
-});
-
-// Get all new games without a second player
-router.get('/', (req, res) => {
-	Game.findAll({
-			where: {
-				board2: null,
-				isComplete: false
-			}
+		.then(gameData => {
+			res.json(gameData);
 		})
-		.then(gameData => res.json(gameData))
 		.catch(err => {
 			console.log(err);
 			res.status(500).json(err);
