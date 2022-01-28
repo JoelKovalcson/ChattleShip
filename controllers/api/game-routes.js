@@ -1,5 +1,25 @@
 const router = require('express').Router();
-const { Game } = require('../../models');
+const {Game, Board, User} = require('../../models');
+
+// Get all games that you're in that aren't complete
+router.get('/mygames', (req, res) => {
+	Game.findAll({
+			include: {
+				model: Board,
+				include: {
+					model: User,
+					where: {
+						id: req.session.user_id
+					}
+				}
+			}
+		})
+		.then(gameData => res.json(gameData))
+		.catch(err => {
+			console.log(err);
+			res.status(500).json(err);
+		});
+});
 
 // Get all new games without a second player
 router.get('/', (req, res) => {
@@ -21,7 +41,11 @@ router.get('/:id', (req, res) => {
 	Game.findAll({
 			where: {
 				id: req.params.id
-			}
+			},
+			include: [{
+				model: Board,
+				attributes: ['owner', 'grid']
+			}]
 		})
 		.then(gameData => res.json(gameData))
 		.catch(err => {
