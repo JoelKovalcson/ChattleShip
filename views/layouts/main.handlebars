@@ -22,7 +22,7 @@
                 </a> 
 
                 {{!-- {{#if loggedIn}} --}}
-                <nav class="flex justify-center sm:w-2/3 sm:"> 
+                <nav class="flex justify-center sm:w-2/3"> 
                     <ul class="flex flex-col content-center sm:w-3/4 justify-around sm:content sm:flex-row sm:p-2">
 					{{#if loggedIn}}
                     <li><a class="border-2 border-transparent rounded-xl hover:brightness-200 hover:shadow-xl hover:shadow-black" href="/profile">{{user_name}}</a></li> 
@@ -33,7 +33,6 @@
                     <li><a class="border-2 border-transparent rounded-xl hover:brightness-200 hover:shadow-xl hover:shadow-black" href="/">Dashboard</a></li>
 					<li><a class="border-2 border-transparent rounded-xl hover:brightness-200 hover:shadow-xl hover:shadow-black" href="/">Login</a></li>
 					{{/if}}
-                    <li></li>
                     {{!-- settings icon to bring down toggle to switch to dark mode --}}
                     </ul>
                 </nav>
@@ -42,10 +41,10 @@
             {{!-- {{/if}} --}}
         </header>
 
-        <main class="h-5/6 flex flex-col w-full h-full border-2 box-border p-12 ">
+        <main class="h-full flex flex-col w-full border-2 box-border p-6 ">
             {{{body}}}
         </main>
-        <footer class="flex justify-center">
+        <footer class="flex flex-col items-center">
             Brought to you by Hyper J 
         </footer>
     </body>
