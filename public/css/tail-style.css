@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.0.16 | MIT License | https://tailwindcss.com
+! tailwindcss v3.0.17 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -678,9 +678,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 0;
 }
 
-.my-44 {
-  margin-top: 11rem;
-  margin-bottom: 11rem;
+.my-72 {
+  margin-top: 18rem;
+  margin-bottom: 18rem;
 }
 
 .box-border {
@@ -703,6 +703,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 83.333333%;
 }
 
+.h-1\/6 {
+  height: 16.666667%;
+}
+
 .w-4\/5 {
   width: 80%;
 }
@@ -717,6 +721,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .content-center {
   align-content: center;
+}
+
+.items-center {
+  align-items: center;
 }
 
 .justify-end {
@@ -755,16 +763,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding: 0.5rem;
 }
 
-.p-5 {
-  padding: 1.25rem;
-}
-
 .p-3 {
   padding: 0.75rem;
 }
 
 .p-12 {
   padding: 3rem;
+}
+
+.p-6 {
+  padding: 1.5rem;
 }
 
 .font-mono {
