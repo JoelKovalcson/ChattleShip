@@ -1,63 +1,91 @@
 const router = require('express').Router();
 const { Game } = require('../../models');
 
+// Get all new games without a second player
 router.get('/', (req, res) => {
-	console.log(req.query);
+	Game.findAll({
+			where: {
+				board2: null,
+				isComplete: false
+			}
+		})
+		.then(gameData => res.json(gameData))
+		.catch(err => {
+			console.log(err);
+			res.status(500).json(err);
+		});
 });
+
+// Get a specific game
+router.get('/:id', (req, res) => {
+	Game.findAll({
+			where: {
+				id: req.params.id
+			}
+		})
+		.then(gameData => res.json(gameData))
+		.catch(err => {
+			console.log(err);
+			res.status(500).json(err);
+		});
+});
+
 
 router.post('/', (req, res) => {
 	Game.create({
-		player1: req.body.player1,
-		player2: req.body.player2,
-		turn: req.body.turn
-	})
-	.then(gameData => res.json(gameData))
-	.catch(err => {
-		console.log(err);
-		res.status(500).json(err);
-	});
+			turn: req.body.turn,
+			board1: req.body.board1,
+			isComplete: false,
+			board2: null
+		})
+		.then(gameData => res.json(gameData))
+		.catch(err => {
+			console.log(err);
+			res.status(500).json(err);
+		});
 });
 
 router.put('/:id', (req, res) => {
-	Game.update({
-		turn: req.body.turn,
-		last_move: req.body.last_move
-	},
-	{
-		where: {
-			id: req.params.id
-		}
-	})
-	.then(gameData => {
-		if (!gameData) {
-			res.status(404).json({message: 'No game found with that id'});
-			return;
-		}
-		res.json(gameData);
-	})
-	.catch(err => {
-		console.log(err);
-		res.status(500).json(err);
-	});
+	Game.update(req.body, {
+			where: {
+				id: req.params.id
+			}
+		})
+		.then(gameData => {
+			if (!gameData) {
+				res.status(404).json({
+					message: 'No game found with that id'
+				});
+				return;
+			}
+			res.json(gameData);
+		})
+		.catch(err => {
+			console.log(err);
+			res.status(500).json(err);
+		});
 });
 
+// Unused (As of now) delete route
 router.delete('/:id', (req, res) => {
 	Game.destroy({
-		where: {
-			id: req.params.id
-		}
-	})
-	.then(gameData => {
-		if (!gameData) {
-			res.status(404).json({message: 'No game found with that id'});
-			return;
-		}
-		res.json(gameData);
-	})
-	.catch(err => {
-		console.log(err);
-		res.status(500).json(err)
-	});
+			where: {
+				id: req.params.id
+			}
+		})
+		.then(gameData => {
+			if (!gameData) {
+				res.status(404).json({
+					message: 'No game found with that id'
+				});
+				return;
+			}
+			res.json(gameData);
+		})
+		.catch(err => {
+			console.log(err);
+			res.status(500).json(err)
+		});
 });
 
 module.exports = router;
