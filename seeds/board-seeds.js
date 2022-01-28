@@ -3,11 +3,33 @@ const { Board } = require('../models');
 const boards = [
 	{
 		owner: 1,
-		grid: 'SAMPLE BOARD'
+		grid: 'SAMPLE BOARD',
+		game_id: 1
 	},
 	{
 		owner: 2,
-		grid: 'SAMPLE BOARD'
+		grid: 'SAMPLE BOARD',
+		game_id: 1
+	},
+	{
+		owner: 1,
+		grid: 'SAMPLE BOARD',
+		game_id: 2
+	},
+	{
+		owner: 2,
+		grid: 'SAMPLE BOARD',
+		game_id: 3
+	},
+	{
+		owner: 1,
+		grid: 'SAMPLE BOARD',
+		game_id: 4
+	},
+	{
+		owner: 2,
+		grid: 'SAMPLE BOARD',
+		game_id: 4
 	}
 ];
 

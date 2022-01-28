@@ -20,22 +20,13 @@ Game.init(
 				key: 'id'
 			}
         },
-		board1: {
-			type: DataTypes.INTEGER,
-			references: {
-				model: Board,
-				key: 'id'
-			}
-		},
-		board2: {
-			type: DataTypes.INTEGER,
-			references: {
-				model: Board,
-				key: 'id'
-			}
-		},
 		isComplete: {
 			type: DataTypes.BOOLEAN
+		},
+		full: {
+			type: DataTypes.BOOLEAN,
+			allowNull: false,
+			defaultValue: false
 		}
     },
     {

@@ -29,20 +29,12 @@ Board.belongsTo(User, {
     foreignKey: 'owner'
 });
 
-Board.hasOne(Game, {
-	foreignKey: 'board1'
+Game.hasMany(Board, {
+	foreignKey: 'game_id'
 });
 
-Game.belongsTo(Board, {
-	foreignKey: 'board1'
-});
-
-Board.hasOne(Game, {
-	foreignKey: 'board2'
-});
-
-Game.belongsTo(Board, {
-	foreignKey: 'board2'
+Board.belongsTo(Game, {
+	foreignKey: 'game_id'
 });
 
 module.exports = {User,Board,Game,Message};

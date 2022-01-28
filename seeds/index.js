@@ -13,9 +13,9 @@ const seedAll = async () => {
 	console.log('-----------------');
 	await seedMessages();
 	console.log('-----------------');
-	await seedBoards();
-	console.log('-----------------');
 	await seedGames();
+	console.log('-----------------');
+	await seedBoards();
 	console.log('-----------------');
 	process.exit(0);
 }
