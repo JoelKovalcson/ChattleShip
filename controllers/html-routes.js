@@ -162,4 +162,11 @@ router.get('/profile', withAuth, (req, res) => {
 	})
 });
 
+router.get('/game/create', withAuth, (req, res) => {
+	res.render('create-game', {
+		loggedIn: req.session.loggedIn,
+		user_name: req.session.user_name
+	});
+});
+
 module.exports = router;
