@@ -3,9 +3,23 @@ const { Game } = require('../models');
 const games = [
 	{
 		turn: 1,
-		board1: 1,
-		board2: 2,
-		isComplete: false
+		isComplete: false,
+		full: true
+	},
+	{
+		turn: 1,
+		isComplete: false,
+		full: false
+	},
+	{
+		turn: 2,
+		isComplete: false,
+		full: false
+	},
+	{
+		turn: 1,
+		isComplete: true,
+		full: true
 	}
 ];
 
