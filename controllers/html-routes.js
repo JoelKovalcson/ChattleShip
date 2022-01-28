@@ -1,5 +1,6 @@
 const { User, Game, Board } = require('../models');
 const { Op } = require("sequelize");
+const withAuth = require('../util/auth');
 
 const router = require('express').Router();
 
@@ -11,7 +12,7 @@ router.get('/', (req, res) => {
 	res.render('login');
 });
 
-router.get('/dashboard', (req, res) => {
+router.get('/dashboard', withAuth, (req, res) => {
 	User.findOne({
 		where: {
 			id: req.session.user_id
@@ -77,7 +78,7 @@ router.get('/dashboard', (req, res) => {
 	
 });
 
-router.get('/game/:id', (req, res) => {
+router.get('/game/:id', withAuth, (req, res) => {
 	Game.findOne({
 		where: {
 			id: req.params.id
@@ -109,7 +110,7 @@ router.get('/game/:id', (req, res) => {
 	
 });
 
-router.get('/profile', (req, res) => {
+router.get('/profile', withAuth, (req, res) => {
 	User.findOne({
 		where: {
 			id: req.session.user_id

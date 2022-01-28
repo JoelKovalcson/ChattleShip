@@ -683,6 +683,18 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 18rem;
 }
 
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
 .box-border {
   box-sizing: border-box;
 }
@@ -713,6 +725,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .w-full {
   width: 100%;
+}
+
+.flex-row {
+  flex-direction: row;
 }
 
 .flex-col {
@@ -773,6 +789,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .p-6 {
   padding: 1.5rem;
+}
+
+.pr-2 {
+  padding-right: 0.5rem;
+}
+
+.pl-2 {
+  padding-left: 0.5rem;
 }
 
 .font-mono {
