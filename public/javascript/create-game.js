@@ -18,6 +18,7 @@ function checkShip(str, length, flipped) {
 	if (!flipped) match = str.match(new RegExp(`^([A-J])([1-${10-length+1}])$`, 'm'));
 	// Check vertical
 	else match = str.match(new RegExp(`^([A-${String.fromCharCode(74 - length + 1)}])([1-9][0]?)$`, 'm'));
+	// Setup object if valid input
 	if (match) {
 		ship.valid = true;
 		ship.letter = match[1];
@@ -33,11 +34,13 @@ function checkShip(str, length, flipped) {
 function drawShip(ship, shouldDraw) {
 	for (let i = 0; i < ship.length; i++) {
 		let square;
+		// Get the next grid coordinate
 		if (!ship.flipped) {
 			square = document.querySelector(`#${ship.letter}${ship.number + i}`);
 		} else {
 			square = document.querySelector(`#${String.fromCharCode(ship.letter.charCodeAt(0) + i)}${ship.number}`);
 		}
+		// If it's already green, ships overlap
 		if (square.classList.contains('bg-green-400')) return false;
 		if (shouldDraw) square.classList.add('bg-green-400');
 	}
@@ -45,6 +48,7 @@ function drawShip(ship, shouldDraw) {
 }
 
 function resetGrid() {
+	// Remove green background from each square
 	for (let i = 0; i < 10; i++) {
 		for (let j = 1; j <= 10; j++) {
 			let square = document.querySelector(`#${String.fromCharCode(65 + i)}${j}`);
@@ -57,6 +61,7 @@ function checkInputs(shouldDraw) {
 
 	// Reset grid display
 	resetGrid();
+
 	// Sanitize input
 	let carrierStr = carrierStart.value.toUpperCase().trim().replace(/ /g, '');
 	let battleshipStr = battleshipStart.value.toUpperCase().trim().replace(/ /g, '');
@@ -115,6 +120,7 @@ function checkInputs(shouldDraw) {
 		return;
 	}
 
+	// Return all ships
 	return {
 		carrier,
 		battleship,
@@ -125,6 +131,7 @@ function checkInputs(shouldDraw) {
 }
 
 function generateBoard(ships) {
+	// Going to use numbers to store firing data in groups of 2 bits (using 20 bits per row)
 	let board = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 	for(var ship in ships) {
 		if(!ships[ship].flipped) {
@@ -161,6 +168,7 @@ async function createGame(event) {
 		}
 	});
 
+	// Get game_id from the newly created game
 	let game_id = null;
 	if(gameResponse.ok) {
 		game_id = (await gameResponse.json()).id;
@@ -170,6 +178,7 @@ async function createGame(event) {
 		return;
 	}
 
+	// Generate a board with ship data
 	let board = generateBoard(ships);
 	let grid = {
 		carrier: {
@@ -181,6 +190,7 @@ async function createGame(event) {
 		shots: board
 	};
 	
+	// Create a board with the data
 	const boardResponse = await fetch('/api/board/', {
 		method: 'post',
 		headers: {
@@ -192,6 +202,7 @@ async function createGame(event) {
 		})
 	});
 
+	// If board was created, go to game page for the new game
 	if(boardResponse.ok) {
 		document.location.replace(`/game/${(await boardResponse.json()).id}`);
 	}
