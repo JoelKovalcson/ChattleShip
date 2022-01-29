@@ -1,18 +1,21 @@
-<a class="flex flex-col box-border border-2 p-3">
-    <ul class="flex flex-col">
-        {{#each Game}}
-            <li>
-                <h4>{{board.owner}} vs. {{board.owner}}</h4>
-                <h5>It is {{turn}}'s turn.</h5>
+<div class="flex flex-col">
+    <h3>Resume Game</h3>
+    <a>
+        <ul class="list-none">
+            {{#each Game}}
+                <li>
+                    <h4>{{board.owner}} vs. {{board.owner}}</h4>
+                    <h5>It is {{turn}}'s turn.</h5>
+                </li>
+            {{/each}}
+            <li class="box-border border-2">
+                user1 vs. user2
+                It is user1's turn.
             </li>
-        {{/each}}
-        <li class="flex flex-col box-border border-2 hover:bg-black-500">
-            <h4>user1 vs. user2</h4>
-            <h5>It is user1's turn.</h5>
-        </li>
-        <li class="flex flex-col box-border border-2">
-            <h4>user1 vs. user2</h4>
-            <h5>It is user1's turn.</h5>
-        </li>
-    </ul>
-</a>
+            <li class="box-border border-2">
+                user1 vs. user2
+                It is user1's turn.
+            </li>
+        </ul>
+    </a>
+</div>

@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.0.16 | MIT License | https://tailwindcss.com
+! tailwindcss v3.0.17 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -702,6 +702,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   display: flex;
 }
 
+.grid {
+  display: grid;
+}
+
 .h-full {
   height: 100%;
 }
@@ -732,6 +736,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .w-1\/6 {
   width: 16.666667%;
+}
+
+.list-none {
+  list-style-type: none;
 }
 
 .flex-row {
@@ -812,6 +820,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding: 0.25rem;
 }
 
+.p-0 {
+  padding: 0px;
+}
+
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
@@ -832,6 +844,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .pl-1 {
   padding-left: 0.25rem;
+}
+
+.pl-0 {
+  padding-left: 0px;
 }
 
 .font-mono {
