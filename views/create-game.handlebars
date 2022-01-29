@@ -148,7 +148,7 @@
                 </div>
             </div>
         </div>
-        <form class="flex flex-col justify-evenly w-64">
+        <form class="flex flex-col justify-evenly w-64" id="board-form">
             <div>
                 <label for="carrier">Carrier - 5 Spaces</label>
                 <input type="text" class="text-black" name="carrier" id="carrier">
@@ -162,10 +162,10 @@
                 <input type="checkbox" name="battleship-rotate" id="battleship-rotate">
             </div>
             <div>
-                <label for="crusier">Crusier - 3 Spaces</label>
-                <input type="text" class="text-black" name="crusier" id="crusier">
-                <label for="crusier-rotate">Flip Vertical</label>
-                <input type="checkbox" name="crusier-rotate" id="crusier-rotate">
+                <label for="cruiser">Cruiser - 3 Spaces</label>
+                <input type="text" class="text-black" name="cruiser" id="cruiser">
+                <label for="cruiser-rotate">Flip Vertical</label>
+                <input type="checkbox" name="cruiser-rotate" id="cruiser-rotate">
             </div>
             <div>
                 <label for="submarine">Submarine - 3 Spaces</label>
@@ -180,9 +180,10 @@
                 <input type="checkbox" name="destroyer-rotate" id="destroyer-rotate">
             </div>
             <div class="flex flex-row justify-between">
-                <button class="border-2 border-transparent rounded-xl hover:brightness-200 hover:shadow-xl hover:shadow-black" id="preview-submit">Preview</button>
-                <button class="border-2 border-transparent rounded-xl hover:brightness-200 hover:shadow-xl hover:shadow-black" id="submit-board">Submit</button>
+                <button class="border-2 border-transparent rounded-xl hover:brightness-200 hover:shadow-xl hover:shadow-black" type="button" id="preview-btn">Preview</button>
+                <button class="border-2 border-transparent rounded-xl hover:brightness-200 hover:shadow-xl hover:shadow-black" type="submit" id="submit-board">Submit</button>
             </div>
         </form>
     </div>
 </div>
+<script src="/javascript/create-game.js"></script>
