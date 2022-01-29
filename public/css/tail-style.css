@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.0.17 | MIT License | https://tailwindcss.com
+! tailwindcss v3.0.16 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -678,10 +678,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 0;
 }
 
-.m-0 {
-  margin: 0px;
-}
-
 .mr-2 {
   margin-right: 0.5rem;
 }
@@ -696,10 +692,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .mt-1 {
   margin-top: 0.25rem;
-}
-
-.mt-3 {
-  margin-top: 0.75rem;
 }
 
 .box-border {
@@ -750,24 +742,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 16.666667%;
 }
 
-.w-10 {
-  width: 2.5rem;
-}
-
-.w-3\/4 {
-  width: 75%;
-}
-
 .w-80 {
   width: 20rem;
-}
-
-.list-outside {
-  list-style-position: outside;
-}
-
-.list-none {
-  list-style-type: none;
 }
 
 .flex-row {
@@ -831,6 +807,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(12 74 110 / var(--tw-bg-opacity));
 }
 
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
 .bg-green-400 {
   --tw-bg-opacity: 1;
   background-color: rgb(74 222 128 / var(--tw-bg-opacity));
@@ -846,13 +827,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(248 113 113 / var(--tw-bg-opacity));
 }
 
-.bg-white {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
 .p-2 {
   padding: 0.5rem;
+}
+
+.p-1 {
+  padding: 0.25rem;
 }
 
 .p-3 {
@@ -861,14 +841,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .p-6 {
   padding: 1.5rem;
-}
-
-.p-1 {
-  padding: 0.25rem;
-}
-
-.p-0 {
-  padding: 0px;
 }
 
 .py-1 {
@@ -891,10 +863,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .pl-1 {
   padding-left: 0.25rem;
-}
-
-.pl-0 {
-  padding-left: 0px;
 }
 
 .text-center {
@@ -1169,16 +1137,16 @@ Ensure the default browser behavior of the `hidden` attribute.
     margin-bottom: 0px;
   }
 
+  .sm\:w-1\/6 {
+    width: 16.666667%;
+  }
+
   .sm\:w-2\/3 {
     width: 66.666667%;
   }
 
   .sm\:w-3\/4 {
     width: 75%;
-  }
-
-  .sm\:w-1\/6 {
-    width: 16.666667%;
   }
 
   .sm\:flex-row {
@@ -1195,11 +1163,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .sm\:p-2 {
     padding: 0.5rem;
-  }
-
-  .sm\:prose-h3\:my-0 :is(:where(h3):not(:where([class~="not-prose"] *))) {
-    margin-top: 0px;
-    margin-bottom: 0px;
   }
 
   .sm\:prose-h4\:my-0 :is(:where(h4):not(:where([class~="not-prose"] *))) {
