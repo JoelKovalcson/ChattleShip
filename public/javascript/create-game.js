@@ -31,7 +31,7 @@ function checkShip(str, length, flipped) {
 	return ship;
 }
 
-function drawShip(ship, shouldDraw) {
+function drawShip(ship, shouldDraw, shipName) {
 	for (let i = 0; i < ship.length; i++) {
 		let square;
 		// Get the next grid coordinate
@@ -40,6 +40,8 @@ function drawShip(ship, shouldDraw) {
 		} else {
 			square = document.querySelector(`#${String.fromCharCode(ship.letter.charCodeAt(0) + i)}${ship.number}`);
 		}
+		// Set the ship icon
+		square.innerHTML = `<img src="/icons/${shipName}.png" alt="${shipName} icon"></img>`;
 		// If it's already green, ships overlap
 		if (square.classList.contains('bg-green-400')) return false;
 		if (shouldDraw) square.classList.add('bg-green-400');
@@ -99,23 +101,23 @@ function checkInputs(shouldDraw) {
 	}
 
 	// All ships are valid, so we can draw them on the screen
-	if (!drawShip(carrier, shouldDraw)) {
+	if (!drawShip(carrier, shouldDraw, 'carrier')) {
 		alert('Your Carrier is overlapping another ship!');
 		return;
 	}
-	if (!drawShip(battleship, shouldDraw)) {
+	if (!drawShip(battleship, shouldDraw, 'battleship')) {
 		alert('Your Battleship is overlapping another ship!');
 		return;
 	}
-	if (!drawShip(cruiser, shouldDraw)) {
+	if (!drawShip(cruiser, shouldDraw, 'cruiser')) {
 		alert('Your Cruiser is overlapping another ship!');
 		return;
 	}
-	if (!drawShip(submarine, shouldDraw)) {
+	if (!drawShip(submarine, shouldDraw, 'submarine')) {
 		alert('Your Submarine is overlapping another ship!');
 		return;
 	}
-	if (!drawShip(destroyer, shouldDraw)) {
+	if (!drawShip(destroyer, shouldDraw, 'destroyer')) {
 		alert('Your Destroyer is overlapping another ship!');
 		return;
 	}

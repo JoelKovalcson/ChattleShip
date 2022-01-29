@@ -97,7 +97,46 @@ function drawBoard(board, el, isMe) {
 			else if (shot == 0b10 && isMe) {
 				if (!square.classList.contains('bg-green-400')) square.classList.add('bg-green-400');
 			}
+			square.innerHTML = "";
 		}
+	}
+	for(let ship in board.grid) {
+		// Skip over the shots array
+		if(board.grid[ship].letter == undefined) continue;
+		console.log(board.grid[ship]);
+		// Setup an array to hold squares of a ship
+		let squareArr = [];
+		// Set destroyed flag
+		let destroyed = true;
+		// If horizontal
+		if(!board.grid[ship].flipped) {
+			let i = board.grid[ship].letter.charCodeAt(0) - 65;
+			console.log(board.grid[ship].number);
+			console.log(board.grid[ship].length);
+			console.log(parseInt(board.grid[ship].number) + board.grid[ship].length - 1);
+			for(let j = parseInt(board.grid[ship].number) - 1; j < parseInt(board.grid[ship].number) + board.grid[ship].length - 1; j++) {
+				// Get the square
+				console.log(`${ship}: [${i}][${j}]`);
+				let square = el.querySelector(`#${String.fromCharCode(65+i)}${j+1}`);
+				// If it hasn't been shot, destroyed is false
+				if(!((board.grid.shots[i] >> (j * 2)) & 0b01)) destroyed = false;
+				// Add to array
+				squareArr.push(square);
+			}
+		}
+		else {
+			let j = parseInt(board.grid[ship].number) - 1;
+			for(let i = board.grid[ship].letter.charCodeAt(0) - 65; i < board.grid[ship].letter.charCodeAt(0) - 65 + board.grid[ship].length; i++) {
+				let square = el.querySelector(`#${String.fromCharCode(65+i)}${j+1}`);
+				if(!((board.grid.shots[i] >> (j * 2)) & 0b01)) destroyed = false;
+				squareArr.push(square);
+			}
+		}
+		// For each square, add icon if it's destroyed or it's mine
+		for(let e of squareArr) {
+			if(destroyed || isMe) e.innerHTML = `<img src="/icons/${ship}.png" alt="${ship} icon"></img>`;
+		}
+		
 	}
 }
 

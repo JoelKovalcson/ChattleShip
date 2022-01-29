@@ -1182,6 +1182,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   .sm\:prose-li\:pl-0 :is(:where(li):not(:where([class~="not-prose"] *))) {
     padding-left: 0px;
   }
+
+  .sm\:prose-img\:my-0 :is(:where(img):not(:where([class~="not-prose"] *))) {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
 }
 
 @media (min-width: 768px) {

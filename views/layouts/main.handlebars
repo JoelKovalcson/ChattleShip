@@ -1,29 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="/css/tail-style.css" rel="stylesheet">
-        {{!-- <link href="/open-iconic/font/css/open-iconic.css" rel="stylesheet"> --}}
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic.min.css" 
-        integrity="sha512-LeCmts7kEi09nKc+DwGJqDV+dNQi/W8/qb0oUSsBLzTYiBwxj0KBlAow2//jV7jwEHwSCPShRN2+IWwWcn1x7Q==" 
-        crossorigin="anonymous" 
-        referrerpolicy="no-referrer" />
-        <title>ChattleShip</title>
-    </head>
-    <body class="bg-sky-900 text-slate-300 font-mono prose-md sm:prose-xl sm:prose-ul:pl-0 sm:prose-h4:my-0 sm:prose-li:pl-0 sm:prose-p:my-0">
-        <header class="flex flex-col justify-between p-3">
-            <a class="flex justify-end" href="/"><span class="oi border-2 border-transparent rounded-xl hover:brightness-200 hover:shadow-xl hover:shadow-black" data-glyph="cog"></span></a>
-        
-            <div class="flex flex-col justify-between sm:flex-row">
-                <a class="flex justify-center prose-lg sm:items-center" href="/">
-                    <h1 class="sm:mb-0">ChattleShip</h1>
-                </a> 
 
-                {{!-- {{#if loggedIn}} --}}
-                <nav class="flex justify-center sm:w-2/3"> 
-                    <ul class="flex flex-col content-center sm:w-3/4 justify-around sm:content sm:flex-row sm:p-2">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="/css/tail-style.css" rel="stylesheet">
+	{{!--
+	<link href="/open-iconic/font/css/open-iconic.css" rel="stylesheet"> --}}
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic.min.css"
+		integrity="sha512-LeCmts7kEi09nKc+DwGJqDV+dNQi/W8/qb0oUSsBLzTYiBwxj0KBlAow2//jV7jwEHwSCPShRN2+IWwWcn1x7Q=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<title>ChattleShip</title>
+</head>
+
+<body class="bg-sky-900 text-slate-300 font-mono prose-md sm:prose-xl sm:prose-ul:pl-0 sm:prose-h4:my-0 sm:prose-li:pl-0 sm:prose-p:my-0 sm:prose-img:my-0">
+	<header class="flex flex-col justify-between p-3">
+		<a class="flex justify-end" href="/"><span
+				class="oi border-2 border-transparent rounded-xl hover:brightness-200 hover:shadow-xl hover:shadow-black"
+				data-glyph="cog"></span></a>
+
+		<div class="flex flex-col justify-between sm:flex-row">
+			<a class="flex justify-center prose-lg sm:items-center" href="/">
+				<h1 class="sm:mb-0">ChattleShip</h1>
+			</a>
+
+			{{!-- {{#if loggedIn}} --}}
+			<nav class="flex justify-center sm:w-2/3">
+				<ul class="flex flex-col content-center sm:w-3/4 justify-around sm:content sm:flex-row sm:p-2">
 					{{#if loggedIn}}
 					<li><a class="border-2 border-transparent rounded-xl hover:brightness-200 hover:shadow-xl hover:shadow-black"
 							href="/profile">{{user_name}}</a></li>
