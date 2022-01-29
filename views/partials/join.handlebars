@@ -1,15 +1,18 @@
-<a class="flex flex-col box-border border-2 p-3">
-    <ul>
-        {{#each Game}}
-            <li>
-                <h4>{{board.owner}}
+<div class="flex flex-col">
+    <h3>Join</h3>
+    <a class="flex flex-col box-border border-2 p-3">
+        <ul>
+            {{#each Game}}
+                <li>
+                    <h4>{{board.owner}}
+                </li>
+            {{/each}}
+            <li class="flex flex-col box-border border-2 hover:bg-black-500">
+                <h4>user1</h4>
             </li>
-        {{/each}}
-        <li class="flex flex-col box-border border-2 hover:bg-black-500">
-            <h4>user1</h4>
-        </li>
-        <li class="flex flex-col box-border border-2">
-            <h4>user2</h4>
-        </li>
-    </ul>
-</a>
+            <li class="flex flex-col box-border border-2">
+                <h4>user2</h4>
+            </li>
+        </ul>
+    </a>
+</div>
