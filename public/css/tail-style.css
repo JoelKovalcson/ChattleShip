@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.0.16 | MIT License | https://tailwindcss.com
+! tailwindcss v3.0.17 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -678,6 +678,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 0;
 }
 
+.m-0 {
+  margin: 0px;
+}
+
 .mr-2 {
   margin-right: 0.5rem;
 }
@@ -692,6 +696,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .mt-1 {
   margin-top: 0.25rem;
+}
+
+.mt-3 {
+  margin-top: 0.75rem;
 }
 
 .box-border {
@@ -712,6 +720,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .h-2\/3 {
   height: 66.666667%;
+}
+
+.h-3\/4 {
+  height: 75%;
 }
 
 .w-full {
@@ -736,6 +748,26 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .w-1\/6 {
   width: 16.666667%;
+}
+
+.w-10 {
+  width: 2.5rem;
+}
+
+.w-3\/4 {
+  width: 75%;
+}
+
+.w-80 {
+  width: 20rem;
+}
+
+.list-outside {
+  list-style-position: outside;
+}
+
+.list-none {
+  list-style-type: none;
 }
 
 .flex-row {
@@ -786,6 +818,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-bottom-width: 4px;
 }
 
+.border-b-2 {
+  border-bottom-width: 2px;
+}
+
 .border-transparent {
   border-color: transparent;
 }
@@ -810,6 +846,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(248 113 113 / var(--tw-bg-opacity));
 }
 
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
 .p-2 {
   padding: 0.5rem;
 }
@@ -824,6 +865,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .p-1 {
   padding: 0.25rem;
+}
+
+.p-0 {
+  padding: 0px;
 }
 
 .py-1 {
@@ -848,6 +893,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-left: 0.25rem;
 }
 
+.pl-0 {
+  padding-left: 0px;
+}
+
 .text-center {
   text-align: center;
 }
@@ -869,6 +918,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-slate-300 {
   --tw-text-opacity: 1;
   color: rgb(203 213 225 / var(--tw-text-opacity));
+}
+
+.text-sky-800 {
+  --tw-text-opacity: 1;
+  color: rgb(7 89 133 / var(--tw-text-opacity));
 }
 
 .outline-2 {
@@ -1123,6 +1177,10 @@ Ensure the default browser behavior of the `hidden` attribute.
     width: 75%;
   }
 
+  .sm\:w-1\/6 {
+    width: 16.666667%;
+  }
+
   .sm\:flex-row {
     flex-direction: row;
   }
@@ -1131,8 +1189,35 @@ Ensure the default browser behavior of the `hidden` attribute.
     align-items: center;
   }
 
+  .sm\:justify-center {
+    justify-content: center;
+  }
+
   .sm\:p-2 {
     padding: 0.5rem;
+  }
+
+  .sm\:prose-h3\:my-0 :is(:where(h3):not(:where([class~="not-prose"] *))) {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  .sm\:prose-h4\:my-0 :is(:where(h4):not(:where([class~="not-prose"] *))) {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  .sm\:prose-p\:my-0 :is(:where(p):not(:where([class~="not-prose"] *))) {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  .sm\:prose-ul\:pl-0 :is(:where(ul):not(:where([class~="not-prose"] *))) {
+    padding-left: 0px;
+  }
+
+  .sm\:prose-li\:pl-0 :is(:where(li):not(:where([class~="not-prose"] *))) {
+    padding-left: 0px;
   }
 }
 
