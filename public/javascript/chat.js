@@ -1,10 +1,10 @@
 const chat_area = document.querySelector('#chatArea');
-let chat_user = chat_area.getAttribute('data-chat-id');
+let chat_user;
 const chat_box = document.querySelector('#chat-input');
 
 async function updateChat() {
 	let conversation;
-	
+	chat_user = chat_area.getAttribute('data-chat-id');
 	if (chat_user) conversation = await (await fetch(`/api/message/${chat_user}`)).json();
 	else {
 		chat_area.innerHTML = "No Enemy Yet";
@@ -51,11 +51,10 @@ async function postChat(event) {
 		}
 	});
 
-	if(response.ok) {
+	if (response.ok) {
 		chat_box.value = "";
 		updateChat();
-	}
-	else {
+	} else {
 		alert(response.statusText);
 	}
 }
@@ -63,4 +62,4 @@ async function postChat(event) {
 document.querySelector('#chat-form').addEventListener('submit', postChat);
 
 updateChat();
-setInterval(updateChat, 5*1000);
+setInterval(updateChat, 5 * 1000);

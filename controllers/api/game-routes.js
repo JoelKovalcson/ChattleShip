@@ -32,18 +32,25 @@ router.get('/joinGames', (req, res) => {
 		});
 });
 
-// Get a specific game
+// Get a specific game's information
 router.get('/:id', (req, res) => {
-	Game.findAll({
+	Game.findOne({
 			where: {
 				id: req.params.id
 			},
 			include: [{
 				model: Board,
-				attributes: ['owner', 'grid']
+				attributes: ['owner', 'grid', 'id'],
+				include: [{
+					model: User,
+					attributes: ['user_name', 'id']
+				}]
 			}]
 		})
-		.then(gameData => res.json(gameData))
+		.then(gameData => {
+			gameData.dataValues.user_id = req.session.user_id;
+			return res.json(gameData);
+		})
 		.catch(err => {
 			console.log(err);
 			res.status(500).json(err);
