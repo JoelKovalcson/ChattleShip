@@ -187,6 +187,30 @@ async function createGame(event) {
 			flipped: ships.carrier.flipped,
 			length: ships.carrier.length
 		},
+		battleship: {
+			letter: ships.battleship.letter,
+			number: ships.battleship.number,
+			flipped: ships.battleship.flipped,
+			length: ships.battleship.length
+		},
+		cruiser: {
+			letter: ships.cruiser.letter,
+			number: ships.cruiser.number,
+			flipped: ships.cruiser.flipped,
+			length: ships.cruiser.length
+		},
+		submarine: {
+			letter: ships.submarine.letter,
+			number: ships.submarine.number,
+			flipped: ships.submarine.flipped,
+			length: ships.submarine.length
+		},
+		destroyer: {
+			letter: ships.destroyer.letter,
+			number: ships.destroyer.number,
+			flipped: ships.destroyer.flipped,
+			length: ships.destroyer.length
+		},
 		shots: board
 	};
 	
