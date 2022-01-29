@@ -159,7 +159,6 @@ router.get('/profile', withAuth, (req, res) => {
 			res.redirect(404, '/dashboard');
 			return;
 		}
-		console.log(userData);
 		res.render('profile', {
 			loggedIn: req.session.loggedIn,
 			user_name: req.session.user_name,
