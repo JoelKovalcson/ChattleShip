@@ -22,22 +22,18 @@ async function fireAtEnemy(event) {
 	}
 	// If you have already fired there
 	let row = match[1].charCodeAt(0) - 65;
-	let col = parseInt(match[2])-1;
-	let prevShot = (enemyBoard.grid.shots[row] >> ( col * 2)) & 0b11;
-	console.log(enemyBoard.grid.shots[row]);
-	console.log('prevShot:', prevShot);
+	let col = parseInt(match[2]) - 1;
+	let prevShot = (enemyBoard.grid.shots[row] >> (col * 2)) & 0b11;
 	if (prevShot & 0b01) {
 		alert("You've already fired there!");
 		return;
 	} else if (prevShot & 0b10) {
 		alert("You got a hit!");
-	}
-	else if (prevShot & 0b00) {
+	} else if (prevShot & 0b00) {
 		alert("You missed!");
 	}
 	// Add the shot to the grid
 	enemyBoard.grid.shots[row] |= (0b01 << (col * 2));
-	console.log(enemyBoard.grid.shots[row]);
 	const boardUpdate = await fetch(`/api/board/${enemyBoard.id}`, {
 		method: 'put',
 		body: JSON.stringify({
@@ -48,7 +44,7 @@ async function fireAtEnemy(event) {
 		}
 	});
 
-	if(!boardUpdate.ok) {
+	if (!boardUpdate.ok) {
 		alert('Error updating board information.');
 		return;
 	}
@@ -56,7 +52,8 @@ async function fireAtEnemy(event) {
 	drawBoard(enemyBoard, enemyBoardEl, false);
 
 	let gameDone = false;
-	// Add check for game completion
+	// Hard coded total number of hits to win
+	if(enemyBoard.hits == 17) gameDone = true;
 
 	const gameUpdate = await fetch(`/api/game/${document.location.pathname.split('/').pop()}`, {
 		method: 'put',
@@ -69,9 +66,12 @@ async function fireAtEnemy(event) {
 		}
 	});
 
-	if(!gameUpdate.ok) {
+	if (!gameUpdate.ok) {
 		alert('Error updating game information.');
 	}
+
+
+
 	myTurn = !myTurn;
 	target_input.value = 'ENEMY TURN';
 	target_input.disabled = true;
@@ -79,6 +79,7 @@ async function fireAtEnemy(event) {
 }
 
 function drawBoard(board, el, isMe) {
+	board.hits = 0;
 	for (let i = 0; i < 10; i++) {
 		for (let j = 0; j < 10; j++) {
 			let square = el.querySelector(`#${String.fromCharCode(65+i)}${j+1}`);
@@ -89,6 +90,7 @@ function drawBoard(board, el, isMe) {
 			}
 			// Hit
 			else if (shot == 0b11) {
+				board.hits++;
 				if (!square.classList.contains('bg-red-400')) square.classList.add('bg-red-400');
 			}
 			// Display my ships
@@ -107,7 +109,8 @@ async function updateBoards() {
 
 
 	if (data.isComplete) {
-		if (!myBoard) alert('This game is finished already!');
+		let winner = data.boards.find(board => board.owner == data.turn);
+		alert(`This game is finished!\n${winner.user.user_name} has won!`);
 		document.location.replace('/dashboard');
 	}
 
