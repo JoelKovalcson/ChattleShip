@@ -1,9 +1,16 @@
 const chat_area = document.querySelector('#chatArea');
-const chat_user = chat_area.getAttribute('data-chat-id');
+let chat_user = chat_area.getAttribute('data-chat-id');
 const chat_box = document.querySelector('#chat-input');
 
 async function updateChat() {
-	let conversation = await (await fetch(`/api/message/${chat_user}`)).json();
+	let conversation;
+	
+	if (chat_user) conversation = await (await fetch(`/api/message/${chat_user}`)).json();
+	else {
+		chat_area.innerHTML = "No Enemy Yet";
+		return;
+	}
+
 	conversation = conversation.reverse();
 	// Clear previous chat
 	chat_area.innerHTML = "";
@@ -26,6 +33,11 @@ async function updateChat() {
 
 async function postChat(event) {
 	event.preventDefault();
+	if (!chat_user) {
+		alert('No enemy yet. Please wait for an enemy to join before chatting!');
+		chat_box.value = "";
+		return;
+	}
 	let message = chat_box.value;
 
 	const response = await fetch("/api/message", {
