@@ -109,7 +109,7 @@ async function updateBoards() {
 
 
 	if (data.isComplete) {
-		let winner = data.boards.find(board => board.owner == data.turn);
+		let winner = data.boards.find(board => board.owner != data.turn);
 		alert(`This game is finished!\n${winner.user.user_name} has won!`);
 		document.location.replace('/dashboard');
 	}
