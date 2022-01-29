@@ -732,6 +732,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 66.666667%;
 }
 
+.w-64 {
+  width: 16rem;
+}
+
 .flex-row {
   flex-direction: row;
 }
@@ -762,6 +766,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .justify-around {
   justify-content: space-around;
+}
+
+.justify-evenly {
+  justify-content: space-evenly;
 }
 
 .rounded-xl {

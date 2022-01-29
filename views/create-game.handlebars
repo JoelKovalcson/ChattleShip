@@ -1,8 +1,8 @@
 <div>
-    <div class="game-builder h-full w-full flex flex-col">
+    <div class="game-builder h-full w-full flex flex-row justify-evenly">
         <div class="flex flex-row" id="board-builder">
             <div class="flex flex-col mr-2 ml-2" id="game-player">
-                <h2>Player Board</h2>
+                <h2>Create Your Board</h2>
                 <div class="flex flex-row" id="A">
                     <div class="box-border border-2 pr-2 pl-2" id="A1">a1</div>
                     <div class="box-border border-2 pr-2 pl-2" id="A2">a2</div>
@@ -125,5 +125,41 @@
                 </div>
             </div>
         </div>
+        <form class="flex flex-col justify-evenly w-64">
+            <div>
+                <label for="carrier">Carrier - 5 Spaces</label>
+                <input type="text" name="carrier" id="carrier">
+                <label for="carrier-rotate">Flip Vertical</label>
+                <input type="checkbox" name="carrier-rotate" id="carrier-rotate">
+            </div>
+            <div>
+                <label for="battleship">Battleship - 4 Spaces</label>
+                <input type="text" name="battleship" id="battleship">
+                <label for="battleship-rotate">Flip Vertical</label>
+                <input type="checkbox" name="battleship-rotate" id="battleship-rotate">
+            </div>
+            <div>
+                <label for="crusier">Crusier - 3 Spaces</label>
+                <input type="text" name="crusier" id="crusier">
+                <label for="crusier-rotate">Flip Vertical</label>
+                <input type="checkbox" name="crusier-rotate" id="crusier-rotate">
+            </div>
+            <div>
+                <label for="submarine">Submarine - 3 Spaces</label>
+                <input type="text" name="submarine" id="submarine">
+                <label for="submarine-rotate">Flip Vertical</label>
+                <input type="checkbox" name="submarine-rotate" id="submarine-rotate">
+            </div>
+            <div>
+                <label for="destroyer">Destroyer - 2 Spaces</label>
+                <input type="text" name="destroyer" id="destroyer">
+                <label for="destroyer-rotate">Flip Vertical</label>
+                <input type="checkbox" name="destroyer-rotate" id="destroyer-rotate">
+            </div>
+            <div class="flex flex-row justify-between">
+                <button class="border-2 border-transparent rounded-xl hover:brightness-200 hover:shadow-xl hover:shadow-black" id="preview-submit">Preview</button>
+                <button class="border-2 border-transparent rounded-xl hover:brightness-200 hover:shadow-xl hover:shadow-black" id="submit-board">Submit</button>
+            </div>
+        </form>
     </div>
 </div>
