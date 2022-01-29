@@ -678,9 +678,18 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 0;
 }
 
-.my-72 {
-  margin-top: 18rem;
-  margin-bottom: 18rem;
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+.m-1 {
+  margin: 0.25rem;
+}
+
+.my-44 {
+  margin-top: 11rem;
+  margin-bottom: 11rem;
 }
 
 .mr-2 {
@@ -715,8 +724,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 83.333333%;
 }
 
-.h-1\/6 {
-  height: 16.666667%;
+.h-1\/2 {
+  height: 50%;
+}
+
+.h-1\/4 {
+  height: 25%;
+}
+
+.h-3\/4 {
+  height: 75%;
 }
 
 .w-4\/5 {
@@ -743,6 +760,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   align-items: center;
 }
 
+.justify-start {
+  justify-content: flex-start;
+}
+
 .justify-end {
   justify-content: flex-end;
 }
@@ -757,6 +778,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .justify-around {
   justify-content: space-around;
+}
+
+.justify-evenly {
+  justify-content: space-evenly;
 }
 
 .rounded-xl {
@@ -777,6 +802,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .p-2 {
   padding: 0.5rem;
+}
+
+.p-5 {
+  padding: 1.25rem;
 }
 
 .p-3 {
