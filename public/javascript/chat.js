@@ -1,6 +1,6 @@
 const chat_area = document.querySelector('#chatArea');
 const chat_user = chat_area.getAttribute('data-chat-id');
-const chat_box = document.querySelector('#chat-submit');
+const chat_box = document.querySelector('#chat-input');
 
 async function updateChat() {
 	let conversation = await (await fetch(`/api/message/${chat_user}`)).json();
@@ -51,4 +51,4 @@ async function postChat(event) {
 document.querySelector('#chat-form').addEventListener('submit', postChat);
 
 updateChat();
-setInterval(updateChat, 10*1000);
+setInterval(updateChat, 5*1000);
