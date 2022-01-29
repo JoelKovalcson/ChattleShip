@@ -6,12 +6,12 @@ function sleep(ms) {
 
 const messages = [
 	{
-		message: 'Hello test2',
+		message: 'Hello!',
 		from: 1,
 		to: 2
 	},
 	{
-		message: 'Hello test1',
+		message: 'Hello!',
 		from: 2,
 		to: 1
 	},
