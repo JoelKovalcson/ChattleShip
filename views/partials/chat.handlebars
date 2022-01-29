@@ -1,26 +1,7 @@
- <div class=" flex flex-col box-border border-2 p-3">
-     <title>Game Chat</title>
-     <ul id="chat-area" class="chat-area flex flex-col">
-        {{!-- Enter in dynamically manipulated code from users as list items --}}
-        {{#each message}}
-            {{#if User1}}
-            <li>{{this}}</li>
-            {{else}}
-            <li>{{this}}</li>
-            {{/if}}
-        {{/each}}
-     </ul>
-    <chat>
-        {{!-- Enter variable for Username who's talking --}}
-        john: hello yall, this is a chat-area
-    </chat>
-    <chat>
-        john #2: Nice whats up bro?
-    </chat>
-    <chat>
-        john: Nothing much wbu?
-    </chat>
-    <chat>
-        john: ...Wow, just gonna ghost me?
-    </chat>
+<div class=" flex flex-col box-border border-2 p-3">
+	<title>Game Chat</title>
+	<ul id="chatArea" class="chat-area flex flex-col" data-chat-id="{{enemyBoard.user.dataValues.id}}">
+		{{!-- Enter in dynamically manipulated code from users as list items --}}
+	</ul>
+	<script src="/javascript/chat.js"></script>
 </div>

@@ -97,10 +97,13 @@ router.get('/game/:id', withAuth, (req, res) => {
 			res.redirect(404, '/dashboard');
 			return;
 		}
+		let me = gameData.boards.find(board => board.user.dataValues.id == req.session.user_id);
+		let enemy = gameData.boards.find(board => board.user.dataValues.id != req.session.user_id);
 		res.render('game', {
 			loggedIn: req.session.loggedIn,
 			user_name: req.session.user_name,
-			game: gameData
+			myBoard: me,
+			enemyBoard: enemy
 		});
 	})
 	.catch(err => {
@@ -153,6 +156,7 @@ router.get('/profile', withAuth, (req, res) => {
 		res.render('profile', {
 			loggedIn: req.session.loggedIn,
 			user_name: req.session.user_name,
+			user_id: req.session.user_id,
 			user: userData
 		});
 	})
