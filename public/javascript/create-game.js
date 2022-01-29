@@ -8,56 +8,6 @@ const submarineStart = document.querySelector('#submarine');
 const submarineFlip = document.querySelector('#submarine-rotate');
 const destroyerStart = document.querySelector('#destroyer');
 const destroyerFlip = document.querySelector('#destroyer-rotate');
-/*
-const newGrid = {
-	ships: [
-		{
-			row: null,
-			col: null,
-			length: 2,
-			isSank: false,
-			isHorizontal: true
-		},
-		{
-			row: null,
-			col: null,
-			length: 3,
-			isSank: false,
-			isHorizontal: true
-		},
-		{
-			row: null,
-			col: null,
-			length: 3,
-			isSank: false,
-			isHorizontal: true
-		},
-		{
-			row: null,
-			col: null,
-			length: 4,
-			isSank: false,
-			isHorizontal: true
-		},
-		{
-			row: null,
-			col: null,
-			length: 5,
-			isSank: false,
-			isHorizontal: true
-		}
-	],
-	myGrid: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-	enemyGrid: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-}
-*/
-// return str.match(/^[a-jA-J][1-9][0]?$/m);
-
-
-
-async function createGame(event) {
-	event.preventDefault();
-}
 
 function checkShip(str, length, flipped) {
 	let ship = {
@@ -80,7 +30,7 @@ function checkShip(str, length, flipped) {
 	return ship;
 }
 
-function drawShip(ship) {
+function drawShip(ship, shouldDraw) {
 	for (let i = 0; i < ship.length; i++) {
 		let square;
 		if (!ship.flipped) {
@@ -88,26 +38,25 @@ function drawShip(ship) {
 		} else {
 			square = document.querySelector(`#${String.fromCharCode(ship.letter.charCodeAt(0) + i)}${ship.number}`);
 		}
-		if(square.classList.contains('bg-green-400')) return false;
-		square.classList.add('bg-green-400');
+		if (square.classList.contains('bg-green-400')) return false;
+		if (shouldDraw) square.classList.add('bg-green-400');
 	}
 	return true;
 }
 
-function resetPreview() {
-	for(let i = 0; i < 10; i++) {
-		for(let j = 1; j <= 10; j++) {
+function resetGrid() {
+	for (let i = 0; i < 10; i++) {
+		for (let j = 1; j <= 10; j++) {
 			let square = document.querySelector(`#${String.fromCharCode(65 + i)}${j}`);
-			if(square.classList.contains('bg-green-400')) square.classList.remove('bg-green-400');
+			if (square.classList.contains('bg-green-400')) square.classList.remove('bg-green-400');
 		}
 	}
 }
 
-async function generatePreview(event) {
-	
-	// Clear all colored grids before checking
-	resetPreview();
+function checkInputs(shouldDraw) {
 
+	// Reset grid display
+	resetGrid();
 	// Sanitize input
 	let carrierStr = carrierStart.value.toUpperCase().trim().replace(/ /g, '');
 	let battleshipStr = battleshipStart.value.toUpperCase().trim().replace(/ /g, '');
@@ -145,24 +94,113 @@ async function generatePreview(event) {
 	}
 
 	// All ships are valid, so we can draw them on the screen
-	if (!drawShip(carrier)) {
+	if (!drawShip(carrier, shouldDraw)) {
 		alert('Your Carrier is overlapping another ship!');
 		return;
 	}
-	if (!drawShip(battleship)) {
+	if (!drawShip(battleship, shouldDraw)) {
 		alert('Your Battleship is overlapping another ship!');
 		return;
 	}
-	if (!drawShip(cruiser)) {
+	if (!drawShip(cruiser, shouldDraw)) {
 		alert('Your Cruiser is overlapping another ship!');
 		return;
 	}
-	if (!drawShip(submarine)) {
+	if (!drawShip(submarine, shouldDraw)) {
 		alert('Your Submarine is overlapping another ship!');
 		return;
 	}
-	if (!drawShip(destroyer)) {
+	if (!drawShip(destroyer, shouldDraw)) {
 		alert('Your Destroyer is overlapping another ship!');
+		return;
+	}
+
+	return {
+		carrier,
+		battleship,
+		cruiser,
+		submarine,
+		destroyer
+	};
+}
+
+function generateBoard(ships) {
+	let board = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+	for(var ship in ships) {
+		if(!ships[ship].flipped) {
+			let i = ships[ship].letter.charCodeAt(0) - 65;
+			for(let j = ships[ship].number - 1; j < ships[ship].number - 1 + ships[ship].length; j++) {
+				board[i] += 2 << (j*2);
+			}
+		}
+		else {
+			let j = ships[ship].number - 1;
+			for(let i = ships[ship].letter.charCodeAt(0) - 65; i < ships[ship].letter.charCodeAt(0) - 65 + ships[ship].length; i++) {
+				board[i] += 2 << (j*2);
+			}
+		}
+	}
+	return board;
+}
+
+function generatePreview(event) {
+	checkInputs(true);
+}
+
+async function createGame(event) {
+	event.preventDefault();
+
+	let ships = checkInputs(false);
+
+	// At this point we know the ships are all in valid locations, so we can create a game and board on database
+
+	const gameResponse = await fetch('/api/game/', {
+		method: 'post',
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	});
+
+	let game_id = null;
+	if(gameResponse.ok) {
+		game_id = (await gameResponse.json()).id;
+	}
+	else {
+		alert(`${gameResponse.status}: Error making a new game!`);
+		return;
+	}
+
+	let board = generateBoard(ships);
+	let grid = {
+		carrier: {
+			letter: ships.carrier.letter,
+			number: ships.carrier.number,
+			flipped: ships.carrier.flipped,
+			length: ships.carrier.length
+		},
+		shots: board
+	};
+	
+	const boardResponse = await fetch('/api/board/', {
+		method: 'post',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({
+			grid: JSON.stringify(grid),
+			game_id
+		})
+	});
+
+	if(boardResponse.ok) {
+		document.location.replace(`/game/${(await boardResponse.json()).id}`);
+	}
+	else {
+		alert(`${boardResponse.status}: Error making a new board!`);
+		// Delete the game we just made if we have an error making a board
+		await fetch(`/api/game/${game_id}`, {
+			method: 'delete'
+		});
 		return;
 	}
 }
