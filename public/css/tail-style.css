@@ -714,6 +714,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 66.666667%;
 }
 
+.h-3\/4 {
+  height: 75%;
+}
+
 .w-full {
   width: 100%;
 }
@@ -1104,12 +1108,20 @@ Ensure the default browser behavior of the `hidden` attribute.
     width: 75%;
   }
 
+  .sm\:w-1\/6 {
+    width: 16.666667%;
+  }
+
   .sm\:flex-row {
     flex-direction: row;
   }
 
   .sm\:items-center {
     align-items: center;
+  }
+
+  .sm\:justify-center {
+    justify-content: center;
   }
 
   .sm\:p-2 {
