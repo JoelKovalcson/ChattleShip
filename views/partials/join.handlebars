@@ -1,5 +1,5 @@
 <div class="flex flex-col w-80">
-    <h3>Join Game</h3>
+    <h3 class="text-2xl text-center">Join Game</h3>
     <a>
         <ul id="joinList" class="flex flex-col border-box">
             <!-- <li>
@@ -21,7 +21,7 @@
                 </div>
             </li> -->
 			{{#each joinList}}
-			<li>
+			<li class="m-3">
 				<div class="flex flex-col text-center justify-center p-6 rounded-lg shadow-lg bg-white max-w-full">
 					<h4 class="text-black text-xl font-semibold">Game: {{this.gameId}}</h4>
 					<p class="text-black text-base font-medium mb-2">{{this.enemy}}</p>
