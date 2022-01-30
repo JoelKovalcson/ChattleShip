@@ -231,6 +231,7 @@ router.get('/profile', withAuth, (req, res) => {
 			loggedIn: req.session.loggedIn,
 			user_name: req.session.user_name,
 			user_id: req.session.user_id,
+			createdAt: userData.createdAt.toDateString().replace(/ /g, '-'),
 			resumeList
 		});
 	})
