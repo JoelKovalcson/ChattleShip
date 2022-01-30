@@ -80,11 +80,20 @@ router.get('/dashboard', withAuth, (req, res) => {
 				resumeList.push(resumeObj);
 			}
 
+			let joinList = [];
+			for (let game of joinGames) {
+				let joinObj = {
+					gameId: game.id,
+					enemy: game.boards[0].user.user_name
+				}
+				joinList.push(joinObj);
+			}
+
 			res.render('dashboard', {
 				loggedIn: req.session.loggedIn,
 				user_name: req.session.user_name,
-				resumeList: resumeList,
-				joinGames: joinGames
+				resumeList,
+				joinList
 			});
 		})
 	})
@@ -97,6 +106,39 @@ router.get('/game/create', withAuth, (req, res) => {
 		user_name: req.session.user_name
 	});
 });
+
+router.get('/game/join/:id', withAuth, (req, res) => {
+	Game.findOne({
+		where: {
+			id: req.params.id
+		},
+		include: {
+			model: Board,
+			attributes: ['id'],
+			include: {
+				model: User,
+				attributes: ['id', 'user_name']
+			}
+		}
+	})
+	.then(gameData => {
+		if(!gameData) {
+			res.redirect(404, '/dashboard');
+			return;
+		}
+		if(gameData.dataValues.boards.length > 1) {
+			res.redirect(403, '/dashboard');
+			return;
+		}
+		res.render('create-game', {
+			loggedIn: req.session.loggedIn,
+			user_name: req.session.user_name
+		})
+	})
+	.catch(err => {
+
+	});
+})
 
 router.get('/game/:id', withAuth, (req, res) => {
 	Game.findOne({
@@ -172,11 +214,24 @@ router.get('/profile', withAuth, (req, res) => {
 			res.redirect(404, '/dashboard');
 			return;
 		}
+
+		let resumeList = [];
+		for (let game of userData.boards) {
+			let resumeObj = {
+				gameId: game.game.id
+			}
+			resumeObj.player1 = req.session.user_name;
+			resumeObj.player2 = game.game.boards[0].user.user_name;
+			if (game.game.turn == req.session.user_id) resumeObj.playerTurn = resumeObj.player1;
+			else resumeObj.playerTurn = resumeObj.player2;
+			resumeList.push(resumeObj);
+		}
+
 		res.render('profile', {
 			loggedIn: req.session.loggedIn,
 			user_name: req.session.user_name,
 			user_id: req.session.user_id,
-			user: userData
+			resumeList
 		});
 	})
 	.catch(err => {

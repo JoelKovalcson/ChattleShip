@@ -25,8 +25,9 @@
 			{{#each resumeList}}
 			<li>
 				<div class="flex flex-col text-center justify-center p-6 rounded-lg shadow-lg bg-white max-w-full">
-					<h4 class="text-black text-xl font-semibold">{{this.player1}} vs. {{this.player2}}</h4>
-					<h5 class="text-black text-l font-medium">It is {{this.playerTurn}}'s turn</h5>
+					<h4 class="text-black text-xl font-semibold">Game: {{this.gameId}}</h4>
+					<h5 class="text-black text-l font-medium">{{this.player1}} vs. {{this.player2}}</h5>
+					<p class="text-black text-base font-medium mb-2">Turn: {{this.playerTurn}}</p>
 					<a href="/game/{{this.gameId}}"><button type="button" class="w-full border-2 border-transparent rounded-xl outline hover:shadow-xl hover:brightness-200 hover:bg-sky-900  hover:shadow-black active:bg-sky-800">Resume Game</button></a>
 				</div>
 			</li>
