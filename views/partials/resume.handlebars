@@ -3,27 +3,35 @@
     <h3>Resume Game</h3>
     <a>
         <ul class="flex flex-col  border-box">
-            <li class="box-border border-2">
-                <div class="flex flex-col">
-                    <h4 class="flex bg-white text-sky-800 border-b-2 justify-center">User1 vs. User2</h4>
-                    <p class="text-center">It is user1's turn</p>
-                    <button class="box-border border-2 hover:brightness-200 hover:shadow-inner hover:shadow-white bg-slate-600 active:bg-slate-700 active:bg-sky-800">Resume Game</button>
+			<!-- <li>
+                <div class="flex flex-col text-center justify-center p-6 rounded-lg shadow-lg bg-white max-w-full">
+                    <h4 class="text-black text-xl font-semibold">User1 vs. User2</h4>
+					<h5 class="text-black text-l font-medium">It is user1's turn</h5>
+                    <button type="button" class="border-2 border-transparent rounded-xl outline hover:shadow-xl hover:brightness-200 hover:bg-sky-900  hover:shadow-black active:bg-sky-800">Join Game</button>
                 </div>
             </li>
-            <li class="box-border border-2">
-                <div class="flex flex-col">
-                    <h4 class="flex bg-white text-sky-800 border-b-2 justify-center">User1 vs. User2</h4>
-                    <p class="text-center">It is user1's turn</p>
-                    <button class="box-border border-2 hover:brightness-200 hover:shadow-inner hover:shadow-white bg-slate-600 active:bg-slate-700 active:bg-sky-800">Resume Game</button>
+            <li>
+                <div class="flex flex-col text-center justify-center p-6 rounded-lg shadow-lg bg-white max-w-full">
+                    <h4 class="text-black text-xl font-medium mb-2">User1</h4>
+                    <button type="button" class="border-2 border-transparent rounded-xl outline hover:shadow-xl hover:brightness-200 hover:bg-sky-900  hover:shadow-black active:bg-sky-800">Join Game</button>
                 </div>
             </li>
-            <li class="box-border border-2">
-                <div class="flex flex-col">
-                    <h4 class="flex bg-white text-sky-800 border-b-2 justify-center">User1 vs. User2</h4>
-                    <p class="text-center">It is user1's turn</p>
-                    <button class="box-border border-2 hover:brightness-200 hover:shadow-inner hover:shadow-white bg-slate-600 active:bg-slate-700 active:bg-sky-800">Resume Game</button>
+            <li>
+                <div class="flex flex-col text-center justify-center p-6 rounded-lg shadow-lg bg-white max-w-full">
+                    <h4 class="text-black text-xl font-medium mb-2">User1</h4>
+                    <button type="button" class="border-2 border-transparent rounded-xl outline hover:shadow-xl hover:brightness-200 hover:bg-sky-900  hover:shadow-black active:bg-sky-800">Join Game</button>
                 </div>
-            </li>
+            </li> -->
+			{{#each resumeList}}
+			<li>
+				<div class="flex flex-col text-center justify-center p-6 rounded-lg shadow-lg bg-white max-w-full">
+					<h4 class="text-black text-xl font-semibold">Game: {{this.gameId}}</h4>
+					<h5 class="text-black text-l font-medium">{{this.player1}} vs. {{this.player2}}</h5>
+					<p class="text-black text-base font-medium mb-2">Turn: {{this.playerTurn}}</p>
+					<a href="/game/{{this.gameId}}"><button type="button" class="w-full border-2 border-transparent rounded-xl outline hover:shadow-xl hover:brightness-200 hover:bg-sky-900  hover:shadow-black active:bg-sky-800">Resume Game</button></a>
+				</div>
+			</li>
+			{{/each}}
         </ul>
     </a>   
 </div>

@@ -135,17 +135,16 @@ function checkInputs(shouldDraw) {
 function generateBoard(ships) {
 	// Going to use numbers to store firing data in groups of 2 bits (using 20 bits per row)
 	let board = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-	for(var ship in ships) {
-		if(!ships[ship].flipped) {
+	for (var ship in ships) {
+		if (!ships[ship].flipped) {
 			let i = ships[ship].letter.charCodeAt(0) - 65;
-			for(let j = ships[ship].number - 1; j < ships[ship].number - 1 + ships[ship].length; j++) {
-				board[i] += 2 << (j*2);
+			for (let j = ships[ship].number - 1; j < ships[ship].number - 1 + ships[ship].length; j++) {
+				board[i] += 2 << (j * 2);
 			}
-		}
-		else {
+		} else {
 			let j = ships[ship].number - 1;
-			for(let i = ships[ship].letter.charCodeAt(0) - 65; i < ships[ship].letter.charCodeAt(0) - 65 + ships[ship].length; i++) {
-				board[i] += 2 << (j*2);
+			for (let i = ships[ship].letter.charCodeAt(0) - 65; i < ships[ship].letter.charCodeAt(0) - 65 + ships[ship].length; i++) {
+				board[i] += 2 << (j * 2);
 			}
 		}
 	}
@@ -161,24 +160,31 @@ async function createGame(event) {
 
 	let ships = checkInputs(false);
 
-	// At this point we know the ships are all in valid locations, so we can create a game and board on database
-
-	const gameResponse = await fetch('/api/game/', {
-		method: 'post',
-		headers: {
-			'Content-Type': 'application/json'
-		}
-	});
-
-	// Get game_id from the newly created game
 	let game_id = null;
-	if(gameResponse.ok) {
-		game_id = (await gameResponse.json()).id;
+	// At this point we know the ships are all in valid locations, so we can create a game and board on database
+	if (document.location.pathname == "/game/create") {
+		const gameResponse = await fetch('/api/game/', {
+			method: 'post',
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
+		// Get game_id from the newly created game
+		if (gameResponse.ok) {
+			game_id = (await gameResponse.json()).id;
+		} else {
+			alert(`${gameResponse.status}: Error making a new game!`);
+			return;
+		}
+	} else if (document.location.pathname.includes("/game/join/")) {
+		game_id = document.location.pathname.split('/').pop();
 	}
 	else {
-		alert(`${gameResponse.status}: Error making a new game!`);
+		alert('Unknown page or game id');
 		return;
 	}
+
+
 
 	// Generate a board with ship data
 	let board = generateBoard(ships);
@@ -215,7 +221,7 @@ async function createGame(event) {
 		},
 		shots: board
 	};
-	
+
 	// Create a board with the data
 	const boardResponse = await fetch('/api/board/', {
 		method: 'post',
@@ -229,10 +235,9 @@ async function createGame(event) {
 	});
 
 	// If board was created, go to game page for the new game
-	if(boardResponse.ok) {
-		document.location.replace(`/game/${(await boardResponse.json()).id}`);
-	}
-	else {
+	if (boardResponse.ok) {
+		document.location.replace(`/game/${game_id}`);
+	} else {
 		alert(`${boardResponse.status}: Error making a new board!`);
 		// Delete the game we just made if we have an error making a board
 		await fetch(`/api/game/${game_id}`, {
