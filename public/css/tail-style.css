@@ -4329,6 +4329,21 @@ textarea.form-control.is-invalid {
   background-color: rgb(248 113 113 / var(--tw-bg-opacity));
 }
 
+.bg-slate-900 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(15 23 42 / var(--tw-bg-opacity));
+}
+
+.bg-slate-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(51 65 85 / var(--tw-bg-opacity));
+}
+
+.bg-slate-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(71 85 105 / var(--tw-bg-opacity));
+}
+
 .bg-clip-padding {
   background-clip: padding-box;
 }
@@ -4564,6 +4579,12 @@ textarea.form-control.is-invalid {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+.hover\:shadow-md:hover {
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
 .hover\:shadow-white:hover {
   --tw-shadow-color: #fff;
   --tw-shadow: var(--tw-shadow-colored);
@@ -4629,6 +4650,16 @@ textarea.form-control.is-invalid {
 .active\:bg-purple-800:active {
   --tw-bg-opacity: 1;
   background-color: rgb(107 33 168 / var(--tw-bg-opacity));
+}
+
+.active\:bg-slate-600:active {
+  --tw-bg-opacity: 1;
+  background-color: rgb(71 85 105 / var(--tw-bg-opacity));
+}
+
+.active\:bg-slate-700:active {
+  --tw-bg-opacity: 1;
+  background-color: rgb(51 65 85 / var(--tw-bg-opacity));
 }
 
 .active\:shadow-lg:active {
@@ -4904,6 +4935,11 @@ textarea.form-control.is-invalid {
 
   .sm\:prose-li\:pl-0 :is(:where(li):not(:where([class~="not-prose"] *))) {
     padding-left: 0px;
+  }
+
+  .sm\:prose-img\:my-0 :is(:where(img):not(:where([class~="not-prose"] *))) {
+    margin-top: 0px;
+    margin-bottom: 0px;
   }
 }
 
