@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "buildcss": "npx tailwindcss -i style.css -o public/css/tail-style.css",
-	"seeds": "node seeds/index.js"
+    "seeds": "node seeds/index.js"
   },
   "repository": {
     "type": "git",
@@ -30,7 +30,8 @@
     "express-session": "^1.17.2",
     "handlebars": "^4.7.7",
     "mysql2": "^2.3.3",
-    "sequelize": "^6.13.0"
+    "sequelize": "^6.13.0",
+    "tw-elements": "^1.0.0-alpha9"
   },
   "devDependencies": {
     "tailwindcss": "^3.0.15"
