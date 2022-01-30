@@ -64,7 +64,7 @@ router.get('/dashboard', withAuth, (req, res) => {
 					attributes: ['user_name', 'id']
 				}
 			},
-			limit: 10
+			limit: 5
 		})
 		.then(async joinGames => {
 

@@ -103,7 +103,6 @@ function drawBoard(board, el, isMe) {
 	for(let ship in board.grid) {
 		// Skip over the shots array
 		if(board.grid[ship].letter == undefined) continue;
-		console.log(board.grid[ship]);
 		// Setup an array to hold squares of a ship
 		let squareArr = [];
 		// Set destroyed flag
@@ -111,9 +110,6 @@ function drawBoard(board, el, isMe) {
 		// If horizontal
 		if(!board.grid[ship].flipped) {
 			let i = board.grid[ship].letter.charCodeAt(0) - 65;
-			console.log(board.grid[ship].number);
-			console.log(board.grid[ship].length);
-			console.log(parseInt(board.grid[ship].number) + board.grid[ship].length - 1);
 			for(let j = parseInt(board.grid[ship].number) - 1; j < parseInt(board.grid[ship].number) + board.grid[ship].length - 1; j++) {
 				// Get the square
 				console.log(`${ship}: [${i}][${j}]`);
