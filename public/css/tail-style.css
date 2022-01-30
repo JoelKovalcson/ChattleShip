@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.0.17 | MIT License | https://tailwindcss.com
+! tailwindcss v3.0.16 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -4569,11 +4569,6 @@ textarea.form-control.is-invalid {
 .active\:bg-slate-700:active {
   --tw-bg-opacity: 1;
   background-color: rgb(51 65 85 / var(--tw-bg-opacity));
-}
-
-.active\:bg-slate-600:active {
-  --tw-bg-opacity: 1;
-  background-color: rgb(71 85 105 / var(--tw-bg-opacity));
 }
 
 .active\:outline:active {
