@@ -55,6 +55,7 @@ function resetGrid() {
 		for (let j = 1; j <= 10; j++) {
 			let square = document.querySelector(`#${String.fromCharCode(65 + i)}${j}`);
 			if (square.classList.contains('bg-green-400')) square.classList.remove('bg-green-400');
+			square.innerHTML = "";
 		}
 	}
 }
