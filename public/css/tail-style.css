@@ -4120,6 +4120,14 @@ textarea.form-control.is-invalid {
   margin-top: 2rem;
 }
 
+.mt-3 {
+  margin-top: 0.75rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
 .box-border {
   box-sizing: border-box;
 }
@@ -4166,6 +4174,36 @@ textarea.form-control.is-invalid {
 
 .h-3\/4 {
   height: 75%;
+}
+
+.h-1\/4 {
+  height: 25%;
+}
+
+.h-min {
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+}
+
+.h-5\/6 {
+  height: 83.333333%;
+}
+
+.h-1\/6 {
+  height: 16.666667%;
+}
+
+.h-72 {
+  height: 18rem;
+}
+
+.h-80 {
+  height: 20rem;
+}
+
+.h-96 {
+  height: 24rem;
 }
 
 .w-full {
@@ -4276,6 +4314,10 @@ textarea.form-control.is-invalid {
 
 .overflow-x-hidden {
   overflow-x: hidden;
+}
+
+.overflow-y-scroll {
+  overflow-y: scroll;
 }
 
 .rounded-xl {
@@ -4975,6 +5017,10 @@ textarea.form-control.is-invalid {
     justify-content: center;
   }
 
+  .sm\:justify-evenly {
+    justify-content: space-evenly;
+  }
+
   .sm\:p-2 {
     padding: 0.5rem;
   }
@@ -5038,11 +5084,21 @@ textarea.form-control.is-invalid {
     margin-top: 2rem;
   }
 
+  .lg\:h-96 {
+    height: 24rem;
+  }
+
   .lg\:w-full {
     width: 100%;
   }
 
   .lg\:flex-row {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 1280px) {
+  .xl\:flex-row {
     flex-direction: row;
   }
 }
