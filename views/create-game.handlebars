@@ -1,5 +1,5 @@
 <div>
-    <div class="game-builder h-full w-full flex flex-row justify-evenly">
+    <div class="game-builder h-full w-full flex flex-col sm:flex-row justify-evenly">
         <div class="flex flex-row" id="board-builder">
             <div class="flex flex-col mr-2 ml-2" id="game-player">
                 <h2>Create Your Board</h2>
@@ -18,7 +18,7 @@
                 </div>
                 <div class="flex flex-row" id="A">
                     <div class="pr-2 pl-2" id="LA">A</div>
-                    <div class="flex flex-col w-11 box-border border-2" id="A1"></div>
+                    <div class="flex flex-col w-11 box-border border-2 pr-2 pl-2" id="A1"></div>
                     <div class="flex flex-col w-11 box-border border-2 pr-2 pl-2" id="A2"></div>
                     <div class="flex flex-col w-11 box-border border-2 pr-2 pl-2" id="A3"></div>
                     <div class="flex flex-col w-11 box-border border-2 pr-2 pl-2" id="A4"></div>
@@ -149,18 +149,21 @@
             </div>
         </div>
         <form class="flex flex-col justify-evenly w-64" id="board-form">
+            {{!-- Carrier form --}}
             <div>
                 <label for="carrier">Carrier - 5 Spaces</label>
                 <input type="text" class="text-black" name="carrier" id="carrier">
                 <label for="carrier-rotate">Flip Vertical</label>
                 <input type="checkbox" name="carrier-rotate" id="carrier-rotate">
             </div>
+            {{!-- Battleship Form --}}
             <div>
                 <label for="battleship">Battleship - 4 Spaces</label>
                 <input type="text" class="text-black" name="battleship" id="battleship">
                 <label for="battleship-rotate">Flip Vertical</label>
                 <input type="checkbox" name="battleship-rotate" id="battleship-rotate">
             </div>
+            {{!-- Cruiser Form --}}
             <div>
                 <label for="cruiser">Cruiser - 3 Spaces</label>
                 <input type="text" class="text-black" name="cruiser" id="cruiser">
@@ -180,8 +183,8 @@
                 <input type="checkbox" name="destroyer-rotate" id="destroyer-rotate">
             </div>
             <div class="flex flex-row justify-between">
-                <button class="border-2 border-transparent rounded-xl hover:brightness-200 hover:shadow-xl hover:shadow-black" type="button" id="preview-btn">Preview</button>
-                <button class="border-2 border-transparent rounded-xl hover:brightness-200 hover:shadow-xl hover:shadow-black" type="submit" id="submit-board">Submit</button>
+                <button class="box-border border-2 hover:brightness-200 hover:shadow-sm hover:shadow-white hover:bg-sky-900 active:bg-sky-800" type="submit" id="submit-board">Submit</button>
+                <button class="box-border border-2 hover:brightness-200 hover:shadow-sm hover:shadow-white hover:bg-sky-900 active:bg-sky-800" type="button" id="preview-btn">Preview</button>
             </div>
         </form>
     </div>

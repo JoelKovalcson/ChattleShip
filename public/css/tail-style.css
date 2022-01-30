@@ -4619,8 +4619,37 @@ textarea.form-control.is-invalid {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+.active\:bg-sky-400:active {
+  --tw-bg-opacity: 1;
+  background-color: rgb(56 189 248 / var(--tw-bg-opacity));
+}
+
+.active\:bg-sky-700:active {
+  --tw-bg-opacity: 1;
+  background-color: rgb(3 105 161 / var(--tw-bg-opacity));
+}
+
+.active\:bg-sky-900:active {
+  --tw-bg-opacity: 1;
+  background-color: rgb(12 74 110 / var(--tw-bg-opacity));
+}
+
+.active\:bg-sky-600:active {
+  --tw-bg-opacity: 1;
+  background-color: rgb(2 132 199 / var(--tw-bg-opacity));
+}
+
+.active\:bg-sky-800:active {
+  --tw-bg-opacity: 1;
+  background-color: rgb(7 89 133 / var(--tw-bg-opacity));
+}
+
 .active\:outline:active {
   outline-style: solid;
+}
+
+.prose-ul\:pl-0 :is(:where(ul):not(:where([class~="not-prose"] *))) {
+  padding-left: 0px;
 }
 
 @media (min-width: 640px) {
@@ -4838,16 +4867,16 @@ textarea.form-control.is-invalid {
     margin-bottom: 0px;
   }
 
-  .sm\:w-1\/6 {
-    width: 16.666667%;
-  }
-
   .sm\:w-2\/3 {
     width: 66.666667%;
   }
 
   .sm\:w-3\/4 {
     width: 75%;
+  }
+
+  .sm\:w-1\/6 {
+    width: 16.666667%;
   }
 
   .sm\:flex-row {
@@ -4866,6 +4895,19 @@ textarea.form-control.is-invalid {
     padding: 0.5rem;
   }
 
+  .sm\:p-3 {
+    padding: 0.75rem;
+  }
+
+  .sm\:prose-h3\:my-0 :is(:where(h3):not(:where([class~="not-prose"] *))) {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  .sm\:prose-h3\:pl-0 :is(:where(h3):not(:where([class~="not-prose"] *))) {
+    padding-left: 0px;
+  }
+
   .sm\:prose-h4\:my-0 :is(:where(h4):not(:where([class~="not-prose"] *))) {
     margin-top: 0px;
     margin-bottom: 0px;
@@ -4876,12 +4918,22 @@ textarea.form-control.is-invalid {
     margin-bottom: 0px;
   }
 
+  .sm\:prose-ul\:my-0 :is(:where(ul):not(:where([class~="not-prose"] *))) {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
   .sm\:prose-ul\:pl-0 :is(:where(ul):not(:where([class~="not-prose"] *))) {
     padding-left: 0px;
   }
 
   .sm\:prose-li\:pl-0 :is(:where(li):not(:where([class~="not-prose"] *))) {
     padding-left: 0px;
+  }
+
+  .sm\:prose-img\:my-0 :is(:where(img):not(:where([class~="not-prose"] *))) {
+    margin-top: 0px;
+    margin-bottom: 0px;
   }
 }
 
