@@ -66,11 +66,24 @@ router.get('/dashboard', withAuth, (req, res) => {
 			},
 			limit: 10
 		})
-		.then(joinGames => {
+		.then(async joinGames => {
+
+			let resumeList = [];
+			for (let game of userGames.boards) {
+				let resumeObj = {
+					gameId: game.game.id
+				}
+				resumeObj.player1 = req.session.user_name;
+				resumeObj.player2 = game.game.boards[0].user.user_name;
+				if (game.game.turn == req.session.user_id) resumeObj.playerTurn = resumeObj.player1;
+				else resumeObj.playerTurn = resumeObj.player2;
+				resumeList.push(resumeObj);
+			}
+
 			res.render('dashboard', {
 				loggedIn: req.session.loggedIn,
 				user_name: req.session.user_name,
-				userGames: userGames,
+				resumeList: resumeList,
 				joinGames: joinGames
 			});
 		})
