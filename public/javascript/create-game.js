@@ -230,7 +230,7 @@ async function createGame(event) {
 
 	// If board was created, go to game page for the new game
 	if(boardResponse.ok) {
-		document.location.replace(`/game/${(await boardResponse.json()).id}`);
+		document.location.replace(`/game/${game_id}`);
 	}
 	else {
 		alert(`${boardResponse.status}: Error making a new board!`);
