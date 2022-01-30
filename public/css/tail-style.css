@@ -4571,6 +4571,11 @@ textarea.form-control.is-invalid {
   background-color: rgb(51 65 85 / var(--tw-bg-opacity));
 }
 
+.active\:bg-slate-600:active {
+  --tw-bg-opacity: 1;
+  background-color: rgb(71 85 105 / var(--tw-bg-opacity));
+}
+
 .active\:outline:active {
   outline-style: solid;
 }
