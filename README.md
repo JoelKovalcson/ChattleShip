@@ -46,6 +46,10 @@ Chattleship is an online game inspired by the classic game Battleship. The curre
 - Helped improve overall CSS style to the page based on our team's agreed theme preferences 
     - emphasis on the beloved "dark-mode"
 
+### Jordan Johnston
+
+- Programmed chat function so players can talk with each other during gameplay
+
 ## Future Ideas
 As a development group, we would like to update this project with additional functionality and ideas including:
  - Modals
